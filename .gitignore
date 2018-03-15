@@ -1,0 +1,11 @@
+odoo/
+.bash_history
+.bashrc
+.cache/
+.local/
+.npm/
+.odoorc
+.profile
+.ssh/
+.sudo_as_admin_successful
+        

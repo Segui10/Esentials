@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<odoo>
+    <!-- Action to open To-do Task list -->
+    <act_window id="action_esential_task"
+      name="Esential"
+      res_model="esential.task"
+      view_mode="tree,form" />
+    <act_window id="action_esential_shop"
+      name="Esential"
+      res_model="esentials.task"
+      view_mode="tree,form" />
+    <!-- Menu item to open To-do Task list -->
+    <menuitem id="menu_esential_task"
+      name="EsentialComponents"
+      action="action_esential_task" />
+    <menuitem id="menu_esential_shop"
+      name="EsentialShop"
+      action="action_esential_shop" />
+</odoo>

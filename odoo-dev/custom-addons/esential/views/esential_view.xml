@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <!-- To-Do Task Form view -->
+    <record id="view_form_todo_task" model="ir.ui.view">
+      <field name="name">To-do Task Form</field>
+      <field name="model">esential.task</field>
+      <field name="arch" type="xml">
+
+        <form>
+          <header>
+            <button name="do_toggle_done" type="object"
+                    string="Toggle Done" class="oe_highlight"/>
+            <button name="do_clear_done" type="object"
+                    string="Clear All Done" />
+          </header>
+          <sheet>
+            <group name="group_top">
+              <group name="group_left">
+                <field name="name"/>
+                <field name="type"/>
+                <field name="price"/>
+                <field name="status"/>
+                <field name="description"/>
+                <field name="marca"/>
+                <field name="shop"/>
+                <field name="points"/>
+                <field name="date"/>
+              </group>
+              <group name="group_right">
+                <field name="tested"/>
+                <field name="active" readonly="1"/>
+              </group>
+            </group>
+          </sheet>
+        </form>
+
+      </field>
+    </record>
+
+    <!-- To-Do Task Form view -->
+    <record id="view_form_shop" model="ir.ui.view">
+      <field name="name">Shops</field>
+      <field name="model">esentials.task</field>
+      <field name="arch" type="xml">
+
+        <form>
+          <header>
+          </header>
+          <sheet>
+            <group name="group_top">
+              <group name="group_left">
+                <field name="name"/>
+                <field name="lat"/>
+                <field name="lon"/>
+              </group>
+            </group>
+          </sheet>
+        </form>
+
+      </field>
+    </record>
+
+    <!-- To-Do Task List view -->
+    <record id="view_tree_todo_task" model="ir.ui.view">
+      <field name="name">To-do Task Tree</field>
+      <field name="model">esential.task</field>
+      <field name="arch" type="xml">
+        <tree colors="decoration-muted: tested==True">
+          <field name="id"/>
+          <field name="name"/>
+          <field name="type"/>
+          <field name="status"/>
+          <field name="price"/>
+          <field name="tested"/>
+        </tree>
+      </field>
+    </record>
+
+    
+
+    <!-- To-Do Task Search view -->
+    <record id="view_filter_todo_task" model="ir.ui.view">
+      <field name="name">To-do Task Filter</field>
+      <field name="model">esential.task</field>
+      <field name="arch" type="xml">
+        <search>
+          <field name="name"/>
+          <filter string="Not Done" domain="[('tested','=',False)]"/>
+          <filter string="Done" domain="[('tested','!=',False)]"/>
+        </search>
+      </field>
+    </record>
+
+</odoo>
