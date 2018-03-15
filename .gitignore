@@ -7,5 +7,6 @@ odoo/
 .odoorc
 .profile
 .ssh/
+.config/
 .sudo_as_admin_successful
-        
+node_modules/        
