@@ -4,7 +4,7 @@ from openerp.http import request
 
 
 class Main(http.Controller):
-    @http.route('/esential/all', type='http', auth='none')
+    @http.route('/esential/all', type='http', auth='none', cors='*')
     def esential(self):
         records = request.env['esential.task'].sudo().search([])
         result = '<html><body><table><tr><td>'
@@ -13,7 +13,7 @@ class Main(http.Controller):
         return result
 
     
-    @http.route('/esential/json', type='http', auth='none')
+    @http.route('/esential/json', type='http', auth='none', cors='*')
     def esential_json(self,**kw):
         records = request.env['esential.task'].sudo().search([])
         component = []
@@ -30,7 +30,7 @@ class Main(http.Controller):
         return json.dumps(component)
         
 
-    @http.route('/esential/shop/json', type='http', auth='none')
+    @http.route('/esential/shop/json', type='http', auth='none', cors='*')
     def shops_json(self,**kw):
         shops = request.env['esentials.task'].sudo().search([]).read()
         return json.dumps({'shops':shops})
