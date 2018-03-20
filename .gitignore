@@ -10,3 +10,4 @@ odoo/
 .config/
 .sudo_as_admin_successful
 node_modules/        
+bundle.js
