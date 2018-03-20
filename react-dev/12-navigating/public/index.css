@@ -4,6 +4,10 @@ body{
   background-color: rgb(170, 170, 170);
 }
 
+a{
+  text-decoration: none;
+}
+
 .active {
   color: white!important;
   text-decoration: none;
@@ -90,10 +94,11 @@ body{
   width: 98%;
   height: 300px!important;
   background-color:gray;
+  border-bottom: 5px solid #333;
 }
 
 .oimage{
-  width: 270px;
+  width: 278px;
   height: 270px;
   background-color: #333;
   float: left;
@@ -155,10 +160,12 @@ body{
 }
 
 .omarg{
+  
   width: 5%;
   background-color: rgb(170, 170, 170);
   height: 300px;
   float: left;
+  border-bottom: 5px solid rgb(170, 170, 170);
 }
 
 .omargr{
@@ -166,4 +173,22 @@ body{
   background-color: rgb(170, 170, 170);
   height: 300px;
   float: right;
+  border-bottom: 5px solid rgb(170, 170, 170);
+}
+
+.imgOfert{
+  margin-left: 5px;
+  width:268px;
+  height:268px;
+}
+
+.imgList{
+  width:100px;
+  height:100px;
+}
+
+.sliderOp{
+  width: 100%;
+  height: 30px;
+  background-color: rgb(170, 170, 170);
 }

@@ -36,7 +36,7 @@ class List extends React.Component{
     const component = this.state.components.map((item, i) => (
       <div className="card" key={item.id}>
         <div className="lname">{ item.name }</div>
-        <div className="limage"><img src={ item.img } alt=""  width="100px" height="100px"/></div>
+        <div className="limage"><img src={ item.img } alt="" className="imgList"/></div>
         <div className="linfo">
           <div className="liname">Informacion</div>
           <div className="lstatus">Estado: { item.status }</div>
