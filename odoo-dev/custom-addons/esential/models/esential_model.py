@@ -16,6 +16,7 @@ class Components(models.Model):
     points = fields.Integer('Points', required=True)
     shop = fields.Integer('Shop', required=True)
     tested = fields.Boolean('Tested', default=False)
+    img = fields.Char('Imagen')
     active = fields.Boolean('Active', default=True)
 
     @api.multi

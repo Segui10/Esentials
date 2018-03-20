@@ -1,3 +1,4 @@
+
 body{
   margin: 0px;
   background-color: rgb(170, 170, 170);
@@ -13,6 +14,7 @@ body{
   background-color: #333;
   padding-top: 30px;
   padding-bottom: 30px;
+  margin: 0px;
 }
 
 .menu li{
@@ -31,7 +33,7 @@ body{
 
 .card{
   margin-left: .66%;
-  margin-bottom: 10px;
+  margin-top: 10px;
   display: inline-block;
   background-color: gray;
   width: 49%;
@@ -82,4 +84,86 @@ body{
 .ldlink{
   text-decoration: none;
   color: white;
+}
+
+.ocard{
+  width: 98%;
+  height: 300px!important;
+  background-color:gray;
+}
+
+.oimage{
+  width: 270px;
+  height: 270px;
+  background-color: #333;
+  float: left;
+}
+
+.linfo{
+  margin-top: 10px;
+  margin-left: 10px;
+  width: 40%;
+  background-color: rgb(90, 90, 90);
+  float: left;
+}
+
+.oname{
+  padding-bottom: 5px;
+  padding-top:5px; 
+  font-size: 18px;
+  width: 90%;
+  color: white;
+  background-color: #333;
+  text-align: center;
+  float: left;
+}
+
+.oinfo{
+  margin-top: 10px;
+  margin-left: 10px;
+  width: 40%;
+  background-color: rgb(90, 90, 90);
+  float: left;
+}
+
+.oiname{
+  font-size: 15px;
+  width: 100%;
+  color: white;
+  background-color: #333;
+  display: inline-block;
+  text-align: center;
+}
+
+.odetails{
+  margin-top: 10px;
+  margin-right: 10px;
+  width: 18%;
+  background-color: #333;
+  height: 245px;
+  float: right; 
+}
+
+.offer{
+  color: white;
+  font-size: 18px;
+  width: 100%;
+  padding-bottom: 8px;
+  padding-top: 8px;
+  background-color: rgb(39, 39, 39);
+
+}
+
+.omarg{
+  width: 5%;
+  background-color: rgb(170, 170, 170);
+  height: 300px;
+  float: left;
+}
+
+.omargr{
+  width: 5%;
+  background-color: rgb(170, 170, 170);
+  height: 300px;
+  float: right;
 }

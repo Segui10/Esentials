@@ -25,6 +25,7 @@
                 <field name="marca"/>
                 <field name="shop"/>
                 <field name="points"/>
+                <field name="img"/>
                 <field name="date"/>
               </group>
               <group name="group_right">

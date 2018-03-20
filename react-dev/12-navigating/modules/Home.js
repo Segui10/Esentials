@@ -1,4 +1,6 @@
 import React from 'react'
+import Slider from "react-slick";
+
 
 class Home extends React.Component{
   constructor(props){
@@ -16,7 +18,8 @@ class Home extends React.Component{
 
   UserList(event) {
     var xmlhttp = new XMLHttpRequest();
-    var url = "http://145.239.199.9:8069/esential/json";
+    var url = "http://localhost:8069/esential/json";
+    //var url = "http://145.239.199.9:8069/esential/json";
     let that=this;
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
@@ -32,24 +35,51 @@ class Home extends React.Component{
     xmlhttp.send();
   }
   render() {
+    var settings = {
+      dots: true,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      autoplay: true,
+      autoplaySpeed: 10000,
+      touchMove: true,
+      arrows:false,
+    };
     const component = this.state.components.map((item, i) => (
-      <div className="card" key={item.id}>
-        <div className="lname">{ item.name }</div>
-        <div className="limage"></div>
-        <div className="linfo">
-          <div className="liname">Informacion</div>
-          <div className="lstatus">Estado: { item.status }</div>
-          <div className="lprice">Precio: { item.price }</div>
-          <div className="ltype">Tipo: { item.type}</div>
+      
+      <div className="ocard" key={item.id}>
+      <div className="omarg"></div>
+      <div className="omargr"></div>
+        <div className="oname">{ item.name }</div>
+        <div className="oimage"><img src={ item.img } alt="" width="270px" height="270px"/></div>
+        <div className="odetails"></div>
+        <div className="oinfo">
+          <div className="oiname">Informacion</div>
+          <div className="ostatus">Estado: { item.status }</div>
+          <div className="oprice">Precio: { item.price }</div>
+          <div className="otype">Tipo: { item.type}</div>
         </div>
-        <div className="ldetails">
-          
+        <div className="oinfo">
+          <div className="oiname">Descripcion</div>
+          <div className="otype">{ item.description}</div>
+        
         </div>
+        
+        
+        
       </div>
     ));
+    console.log(component);
     return (
       <div>
-      <div>{ component }</div>
+        <div className="coverPage">
+        
+        </div>
+        <div className="offer">Ofertas</div>
+        <Slider {...settings}>
+          { component }
+        </Slider>
       </div>
     );
   }
