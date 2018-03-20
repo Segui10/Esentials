@@ -5,9 +5,12 @@ class List extends React.Component{
     super(props);
     this.state = {                
       components: [],
+      componentsOriginal:[],
+      search:"",
     };      
     
     this.UserList = this.UserList.bind(this);
+    this.search=this.search.bind(this);
   } 
 
   componentDidMount() {
@@ -24,7 +27,8 @@ class List extends React.Component{
             var myArr = JSON.parse(this.responseText);
             console.log(myArr);
             that.setState({
-              components: myArr
+              components: myArr,
+              componentsOriginal: myArr,
             });
         }
     };
@@ -32,6 +36,45 @@ class List extends React.Component{
     xmlhttp.setRequestHeader('Content-Type', 'text/plain');
     xmlhttp.send();
   }
+
+  search(event){
+    const target = event.target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const name = target.name;
+    let componentName=[];
+    let newComponentMap=[];
+    console.log(value);
+    this.setState({
+        [name]: value
+    }); 
+    if(this.state.search.length>value.length){
+        this.state.componentsOriginal.map((name) =>
+            console.log(name)
+        );
+    }else{
+        this.state.components.map((name) =>
+          console.log(name)
+        );
+    }
+    
+    componentName=this.filterItems(value,componentName);
+    componentName.map((student) =>
+      newComponentMap.push([student[0],student[2],student[3]])
+    );
+    console.log(studentName);
+    this.setState({
+        searchmap: newMapStudent,
+        search: value
+    });
+}
+
+filterItems(query,array) {
+    return array.filter(function(el) {
+        console.log(el);
+        return el.toLowerCase().indexOf(query.toLowerCase()) > -1;
+    })
+}
+
   render() {
     const component = this.state.components.map((item, i) => (
       <div className="card" key={item.id}>
@@ -50,6 +93,7 @@ class List extends React.Component{
     ));
     return (
       <div>
+        <input type="text" id="idFirstName" name="search" value={this.state.search} onChange={this.search} />
       <div>{ component }</div>
       </div>
     );

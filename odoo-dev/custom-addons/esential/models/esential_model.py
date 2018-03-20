@@ -16,6 +16,7 @@ class Components(models.Model):
     points = fields.Integer('Points', required=True)
     shop = fields.Integer('Shop', required=True)
     tested = fields.Boolean('Tested', default=False)
+    offer = fields.Boolean('Offer', default=False)
     img = fields.Char('Imagen')
     active = fields.Boolean('Active', default=True)
 
@@ -23,6 +24,12 @@ class Components(models.Model):
     def do_toggle_done(self):
         for task in self:
             task.tested = not task.tested
+        return True
+
+    @api.multi
+    def do_toggle_done_Offer(self):
+        for task in self:
+            task.offer = not task.offer
         return True
 
 class Shops(models.Model):
