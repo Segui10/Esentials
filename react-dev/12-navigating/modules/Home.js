@@ -16,7 +16,7 @@ class Home extends React.Component{
 
   UserList(event) {
     var xmlhttp = new XMLHttpRequest();
-    var url = "http://localhost:8069/esential/json";
+    var url = "http://145.239.199.9:8069/esential/json";
     let that=this;
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
