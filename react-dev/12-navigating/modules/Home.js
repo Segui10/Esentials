@@ -33,13 +33,22 @@ class Home extends React.Component{
   }
   render() {
     const component = this.state.components.map((item, i) => (
-      <div>
-        <h1>{ item.name }</h1>
+      <div className="card" key={item.id}>
+        <div className="lname">{ item.name }</div>
+        <div className="limage"></div>
+        <div className="linfo">
+          <div className="liname">Informacion</div>
+          <div className="lstatus">Estado: { item.status }</div>
+          <div className="lprice">Precio: { item.price }</div>
+          <div className="ltype">Tipo: { item.type}</div>
+        </div>
+        <div className="ldetails">
+          
+        </div>
       </div>
     ));
     return (
       <div>
-      <div>Home</div>
       <div>{ component }</div>
       </div>
     );
