@@ -7,8 +7,9 @@ class List extends React.Component{
       components: [],
       componentsOriginal:[],
       search:"",
+      params:this.props.params,
     };      
-    
+    console.log(this.props.params);
     this.UserList = this.UserList.bind(this);
     this.search=this.search.bind(this);
   } 
@@ -18,14 +19,19 @@ class List extends React.Component{
   }
 
   UserList(event) {
+    let params=this.state.params.param;
     var xmlhttp = new XMLHttpRequest();
-    var url = "http://localhost:8069/esential/json";
-    //var url = "http://145.239.199.9:8069/esential/json";
+    if(params){
+      var url = "http://localhost:8069/esential/json?type="+params;
+      //var url = "http://145.239.199.9:8069/esential/json"+params;
+    }else{
+      var url = "http://localhost:8069/esential/json";
+      //var url = "http://145.239.199.9:8069/esential/json";
+    }
     let that=this;
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var myArr = JSON.parse(this.responseText);
-            console.log(myArr);
             that.setState({
               components: myArr,
               componentsOriginal: myArr,
@@ -41,37 +47,26 @@ class List extends React.Component{
     const target = event.target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
     const name = target.name;
-    let componentName=[];
-    let newComponentMap=[];
-    console.log(value);
+    let componentName=this.state.components;
     this.setState({
         [name]: value
     }); 
+
     if(this.state.search.length>value.length){
-        this.state.componentsOriginal.map((name) =>
-            console.log(name)
-        );
-    }else{
-        this.state.components.map((name) =>
-          console.log(name)
-        );
+      componentName=this.state.componentsOriginal;
     }
     
     componentName=this.filterItems(value,componentName);
-    componentName.map((student) =>
-      newComponentMap.push([student[0],student[2],student[3]])
-    );
-    console.log(studentName);
     this.setState({
-        searchmap: newMapStudent,
+        components: componentName,
         search: value
     });
 }
 
 filterItems(query,array) {
     return array.filter(function(el) {
-        console.log(el);
-        return el.toLowerCase().indexOf(query.toLowerCase()) > -1;
+        let cName=el.name;
+        return cName.toLowerCase().indexOf(query.toLowerCase()) > -1;
     })
 }
 
@@ -93,7 +88,9 @@ filterItems(query,array) {
     ));
     return (
       <div>
-        <input type="text" id="idFirstName" name="search" value={this.state.search} onChange={this.search} />
+        <div className="searchList">
+        <input type="text" id="idFirstName" className="inputSearchList" placeholder="Search" name="search" value={this.state.search} onChange={this.search} />
+        </div>
       <div>{ component }</div>
       </div>
     );
