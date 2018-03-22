@@ -2,6 +2,7 @@
 body{
   margin: 0px;
   background-color: rgb(170, 170, 170);
+  font-family: 'Nunito Sans', sans-serif;
 }
 
 a{
@@ -198,6 +199,7 @@ a{
   padding-bottom: 8px;
   padding-top: 8px;
   background-color: rgb(39, 39, 39);
+  display: inline-block;
 }
 
 .inputSearchList{
@@ -209,6 +211,7 @@ a{
   border:none;
   border-bottom:1px solid gray;
   width:20%;
+  float: left;
 }
 
 .catElement{
@@ -282,4 +285,71 @@ a{
 
 .submitContact:hover{
   background-color: rgb(82, 82, 82);
+}
+
+
+.comboBoxList{
+  margin-left: 1%;
+  background-color: rgb(39, 39, 39);
+  color: rgb(150, 150, 150);
+  padding:7px;
+  display:block;
+  border:none;
+  border-bottom:1px solid gray;
+  width:20%;
+  float: left;
+}
+
+.detailButtonList{
+  color: white;
+  text-decoration: none;
+  background-color: #333;
+  padding: 26.5px;
+  padding-left: 5%;
+  padding-right: 5%;
+  margin-top: 10px;
+  margin-left: 10px;
+  float: left;
+}
+
+.shopcartButtonList{
+  color: white;
+  text-decoration: none;
+  background-color: #277acc;
+  padding: 26.5px;
+  padding-left: 5%;
+  padding-right: 5%;
+  margin-top: 10px;
+  margin-left: 10px;
+  float: left;
+}
+
+.shopcartButtonList:hover{}
+
+.detailButtonList:hover{}
+
+.detailButtonOffer{
+  color: white;
+  font-size: 24px;
+  text-decoration: none;
+  background-color: #333;
+  padding: 36.5px;
+  padding-left: 8%;
+  padding-right: 8%;
+  margin-top: 10px;
+  margin-right: 2%;
+  float: right;
+}
+
+.shopcartButtonOffer{
+  color: white;
+  font-size: 24px;
+  text-decoration: none;
+  background-color: #277acc;
+  padding: 36.5px;
+  padding-left: 8%;
+  padding-right: 8%;
+  margin-top: 10px;
+  margin-right: 2%;
+  float: right;
 }

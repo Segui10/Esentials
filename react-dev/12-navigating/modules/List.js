@@ -9,14 +9,31 @@ class List extends React.Component{
       componentsOriginal:[],
       search:"",
       params:this.props.params,
+      filter:'name'
     };      
-    console.log(this.props);
     this.UserList = this.UserList.bind(this);
     this.search=this.search.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);  
   } 
 
   componentDidMount() {
     this.UserList();
+  }
+
+  handleInputChange(event) {
+    const target = event.target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const name = target.name;
+    
+    this.setState({
+      [name]: value,
+      search:'',
+      components:this.state.componentsOriginal,
+    });
+  }
+
+  shopCartAdd(event) {
+    console.log(event);
   }
 
   UserList(event) {
@@ -57,16 +74,31 @@ class List extends React.Component{
       componentName=this.state.componentsOriginal;
     }
     
-    componentName=this.filterItems(value,componentName);
+    componentName=this.filterItems(value,componentName,this.state.filter);
     this.setState({
         components: componentName,
         search: value
     });
 }
 
-filterItems(query,array) {
+filterItems(query,array,filter) {
     return array.filter(function(el) {
-        let cName=el.name;
+      let cName='';
+        switch(filter){
+          case 'name':
+          cName=el.name;
+          break;
+          case 'type':
+          cName=JSON.stringify(el.type);
+          break;
+          case 'price':
+          cName=JSON.stringify(el.price);
+          break;
+          default:
+          cName=el.name;
+          break;
+        }
+        
         return cName.toLowerCase().indexOf(query.toLowerCase()) > -1;
     })
 }
@@ -82,15 +114,19 @@ filterItems(query,array) {
           <div className="lprice">Precio: { item.price }</div>
           <div className="ltype">Tipo: { item.type}</div>
         </div>
-        <div className="ldetails">
-        <NavLink to={'/details/'+item.id} className="catElement">Detalles</NavLink>
-        </div>
+        <NavLink to={'/details/'+item.id} className="detailButtonList">Detalles</NavLink>
+        <a className="shopcartButtonList" onClick={(e)=>this.shopCartAdd(item)}>Carrito</a>
       </div>
     ));
     return (
       <div>
         <div className="searchList">
         <input type="text" id="idFirstName" className="inputSearchList" placeholder="Search" name="search" value={this.state.search} onChange={this.search} />
+        <select className="comboBoxList" name="filter" onChange={this.handleInputChange}>    
+          <option value="name" defaultValue>Nombre</option>
+          <option value="price">Precio</option>
+          <option value="type">Tipo</option>
+        </select>
         </div>
       <div>{ component }</div>
       </div>
