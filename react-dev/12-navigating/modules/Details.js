@@ -1,15 +1,13 @@
 import React from 'react'
-import Slider from "react-slick";
-import NavLink from './NavLink'
 
-
-class Offer extends React.Component{
+class List extends React.Component{
   constructor(props){
     super(props);
     this.state = {                
       components: [],
+      params:this.props.params,
     };      
-    
+    console.log(this.props.params);
     this.UserList = this.UserList.bind(this);
   } 
 
@@ -17,17 +15,19 @@ class Offer extends React.Component{
     this.UserList();
   }
 
-  UserList() {
+  UserList(event) {
+    let params=this.state.params.param;
     var xmlhttp = new XMLHttpRequest();
-    var url = "http://localhost:8069/esential/json?offer=True";
-    //var url = "http://145.239.199.9:8069/esential/json?offer=True";
+      var url = "http://localhost:8069/esential/json?id="+params;
+      //var url = "http://145.239.199.9:8069/esential/json?id="+params;
+    
     let that=this;
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var myArr = JSON.parse(this.responseText);
-            console.log(myArr);
             that.setState({
-              components: myArr
+              components: myArr,
+              componentsOriginal: myArr,
             });
         }
     };
@@ -36,27 +36,15 @@ class Offer extends React.Component{
     xmlhttp.send();
   }
 
+ 
+
   render() {
-    var settings = {
-      dots: true,
-      infinite: true,
-      speed: 500,
-      slidesToShow: 1,
-      slidesToScroll: 1,
-      autoplay: true,
-      autoplaySpeed: 10000,
-      touchMove: true,
-      arrows:false,
-    };
     const component = this.state.components.map((item, i) => (
       <div className="ocard" key={item.id}>
       <div className="omarg"></div>
       <div className="omargr"></div>
         <div className="oname">{ item.name }</div>
         <div className="oimage"><img src={ item.img } className="imgOfert" alt="" /></div>
-        <div className="odetails">
-        <NavLink to={'/details/'+item.id} className="catElement">Detalles</NavLink>
-        </div>
         <div className="oinfo">
           <div className="oiname">Informacion</div>
           <div className="ostatus">Estado: { item.status }</div>
@@ -69,14 +57,11 @@ class Offer extends React.Component{
         </div>
       </div>
     ));
-
     return (
       <div>
-        <Slider {...settings}>
-          { component }
-        </Slider>
+        <div>{ component }</div>
       </div>
     );
   }
 }
-export default Offer;
+export default List;

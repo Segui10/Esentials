@@ -60,7 +60,7 @@ filterItems(query,array) {
 
   render() {
     const categories = this.state.cat.map((item, i) => (
-      <div className="catElementCont"><NavLink to={item.url} className="catElement">{item.name}</NavLink></div>
+      <div className="catElementCont"><NavLink to={item.url} className="catElement" props={item}>{item.name}</NavLink></div>
     ));
     return (
       <div>

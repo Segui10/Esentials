@@ -5,15 +5,14 @@ import Category from './Category';
 import Contact from './Contact';
 
 
+
 class Home extends React.Component{
 
   render() {
     
     return (
       <div>
-        <div className="coverPage">
-        
-        </div>
+        <div className="coverPage"></div>
         <div className="offer">Ofertas</div>
           <Offer/>
         <div className="sliderOp"></div>

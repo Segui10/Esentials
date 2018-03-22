@@ -4,15 +4,7 @@ from openerp.http import request
 
 
 class Main(http.Controller):
-    @http.route('/esential/all', type='http', auth='none', cors='*')
-    def esential(self):
-        records = request.env['esential.task'].sudo().search([])
-        result = '<html><body><table><tr><td>'
-        result += '</td></tr><tr><td>'.join(records.mapped('name'))
-        result += '</td></tr></table></body></html>'
-        return result
 
-    
     @http.route('/esential/json', type='http', auth='none', cors='*')
     def esential_json(self,**kw):
         records = request.env['esential.task'].sudo().search([])

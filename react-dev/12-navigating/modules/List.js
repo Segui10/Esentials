@@ -1,4 +1,5 @@
 import React from 'react'
+import NavLink from './NavLink'
 
 class List extends React.Component{
   constructor(props){
@@ -9,7 +10,7 @@ class List extends React.Component{
       search:"",
       params:this.props.params,
     };      
-    console.log(this.props.params);
+    console.log(this.props);
     this.UserList = this.UserList.bind(this);
     this.search=this.search.bind(this);
   } 
@@ -82,7 +83,7 @@ filterItems(query,array) {
           <div className="ltype">Tipo: { item.type}</div>
         </div>
         <div className="ldetails">
-          
+        <NavLink to={'/details/'+item.id} className="catElement">Detalles</NavLink>
         </div>
       </div>
     ));
