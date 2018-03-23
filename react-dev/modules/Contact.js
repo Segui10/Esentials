@@ -34,6 +34,7 @@ handleSubmit(event) {
     
     return (
       <div>
+        <div className="offer">Contacto</div>
         <div className="contactBox">
         <form id="newGradedTask" onSubmit={this.handleSubmit}>
          <input type="text" className="inputContact" name="name" placeholder="Nombre" value={this.state.name} onChange={this.handleInputChange} required/> 

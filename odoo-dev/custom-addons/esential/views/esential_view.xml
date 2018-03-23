@@ -6,7 +6,6 @@
       <field name="name">To-do Task Form</field>
       <field name="model">esential.task</field>
       <field name="arch" type="xml">
-
         <form>
           <header>
             <button name="do_toggle_done" type="object"
@@ -36,7 +35,6 @@
             </group>
           </sheet>
         </form>
-
       </field>
     </record>
 

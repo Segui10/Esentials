@@ -9,15 +9,31 @@ class List extends React.Component{
       componentsOriginal:[],
       search:"",
       params:this.props.params,
-      filter:'name'
+      filter:'name',
+      sticky:{},
     };      
     this.UserList = this.UserList.bind(this);
     this.search=this.search.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);  
+    let that=this;
+    window.onscroll = function() {that.myFunction()};
   } 
 
   componentDidMount() {
     this.UserList();
+      let navbar = document.getElementById("search");
+      let sticky = navbar.offsetTop;
+      this.setState({
+        sticky: sticky,
+      }); 
+  }
+
+  myFunction() {
+    if (window.pageYOffset >= this.state.sticky) {
+      navbar.classList.add("sticky")
+    } else {
+      navbar.classList.remove("sticky");
+    }
   }
 
   handleInputChange(event) {
@@ -120,7 +136,7 @@ filterItems(query,array,filter) {
     ));
     return (
       <div>
-        <div className="searchList">
+        <div className="searchList" id="search">
         <input type="text" id="idFirstName" className="inputSearchList" placeholder="Search" name="search" value={this.state.search} onChange={this.search} />
         <select className="comboBoxList" name="filter" onChange={this.handleInputChange}>    
           <option value="name" defaultValue>Nombre</option>

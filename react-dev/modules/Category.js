@@ -18,7 +18,7 @@ class Category extends React.Component{
     let categories=[
       {name:'Grafica',url:'/list/Grafica'},{name:'Raton',url:'/list/Raton'},
       {name:'Procesador',url:'/list/Procesador'},{name:'Auriculares',url:'/list/Auriculares'},
-      {name:'Ram',url:'/list/Ram'},{name:'Pantallas',url:'/list/Pantalla'},
+      {name:'Ram',url:'/list/Ram'},{name:'Monitor',url:'/list/Monitor'},
       {name:'HDD',url:'/list/HDD'},{name:'Cables',url:'/list/Cables'},
       {name:'PlacaBase',url:'/list/PlacaBase'},{name:'Refrigeracion',url:'/list/Refrigeracion'},
       {name:'FuenteAlimentacion',url:'/list/FuenteAlimentacion'},{name:'Teclado',url:'/list/Teclado'},

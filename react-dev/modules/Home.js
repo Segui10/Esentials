@@ -19,7 +19,6 @@ class Home extends React.Component{
         <div className="offer">Categorias</div>
           <Category/>
         <div className="sliderOp"></div>
-        <div className="offer">Contacto</div>
           <Contact/>
       </div>
     );

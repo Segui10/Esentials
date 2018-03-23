@@ -25,4 +25,4 @@ class Main(http.Controller):
     @http.route('/esential/shop/json', type='http', auth='none', cors='*')
     def shops_json(self,**kw):
         shops = request.env['esentials.task'].sudo().search([]).read()
-        return json.dumps({'shops':shops})
+        return json.dumps(shops)
