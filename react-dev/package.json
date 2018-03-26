@@ -19,6 +19,7 @@
     "react-dom": "^0.14.7",
     "react-gmaps": "^1.9.0",
     "react-router": "^2.0.0",
+    "react-scrollbar-js": "^1.0.1",
     "react-slick": "^0.21.0"
   },
   "devDependencies": {

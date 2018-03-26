@@ -54,25 +54,30 @@ class Offer extends React.Component{
       <div className="omargr"></div>
         <div className="oname">{ item.name }</div>
         <div className="oimage"><img src={ item.img } className="imgOfert" alt="" /></div>
-       
+        
+        <div className="offerCont1">
         <div className="oinfo">
           <div className="oiname">Informacion</div>
           <div className="ostatus">Estado: { item.status }</div>
           <div className="oprice">Precio: { item.price }</div>
           <div className="otype">Tipo: { item.type}</div>
         </div>
-        <NavLink to={'/details/'+item.id} className="detailButtonOffer">Detalle</NavLink>
-        
         <div className="oinfo">
           <div className="oiname">Descripcion</div>
           <div className="otype">{ item.description}</div>
         </div>
+
+        </div>
+        <div className="offerCont2">
         <div className="shopcartButtonOffer">Carrito</div>
+        <NavLink to={'/details/'+item.id} className="detailButtonOffer">Detalle</NavLink>
+        </div>
+
       </div>
     ));
 
     return (
-      <div>
+      <div className="ocontent">
         <Slider {...settings}>
           { component }
         </Slider>

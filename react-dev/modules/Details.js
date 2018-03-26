@@ -1,5 +1,6 @@
 import React from 'react'
-import Contact from './Contact';
+import ListSameName from './ListSameName';
+import ReactScrollbar from 'react-scrollbar-js';
 import {Gmaps, Marker, InfoWindow, Circle} from 'react-gmaps';
 
  
@@ -13,14 +14,50 @@ class List extends React.Component{
       params:this.props.params,
       shops:[],
       coords:{},
+      sticky: {},
+      status:0,
+      price:0,
+      lat:0,
+      lgt:0,
     };      
     this.UserList = this.UserList.bind(this);
     this.GetShops = this.GetShops.bind(this);
+    this.componentWillReceiveProps = this.componentWillReceiveProps.bind(this);
+    let that=this;
+    window.onscroll = function() {that.myFunction()};
+    
   } 
+
+  componentWillReceiveProps(newProps){
+    this.setState({
+      params: newProps.params.param,
+    }); 
+    this.UserList(newProps.params.param);
+  }
 
   componentDidMount() {
     this.UserList();
     this.GetShops();
+    let sticky = document.getElementById("navbar").offsetTop;
+    this.setState({
+      sticky: sticky,
+    }); 
+    this.componentWillUnmount=this.componentWillUnmount.bind(this);
+  }
+
+  componentWillUnmount(){
+    navbar.classList.remove("sticky");
+    component.classList.remove("sticky2");
+  }
+  
+  myFunction() {
+    if (window.pageYOffset >= this.state.sticky) {
+      navbar.classList.add("sticky");
+      component.classList.add("sticky2");
+    } else {
+      navbar.classList.remove("sticky");
+      component.classList.remove("sticky2");
+    }
   }
   
 
@@ -42,8 +79,11 @@ class List extends React.Component{
     console.log('onClick', e);
   }
 
-  UserList(event) {
+  UserList(param) {
     let params=this.state.params.param;
+    if(param){
+      params=param;
+    }
     var xmlhttp = new XMLHttpRequest();
       var url = "http://localhost:8069/esential/json?id="+params;
       //var url = "http://145.239.199.9:8069/esential/json?id="+params;
@@ -52,9 +92,11 @@ class List extends React.Component{
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var myArr = JSON.parse(this.responseText);
+            
             that.setState({
-              components: myArr,
-              componentsOriginal: myArr,
+              components: myArr[0],
+              price: myArr[0].price,
+              status: myArr[0].status,
             });
         }
     };
@@ -63,7 +105,7 @@ class List extends React.Component{
     xmlhttp.send();
   }
 
-  GetShops(event) {
+  GetShops() {
     let params=this.state.params.param;
     var xmlhttp = new XMLHttpRequest();
       var url = "http://localhost:8069/esential/shop/json";
@@ -90,43 +132,17 @@ class List extends React.Component{
     }else if(st<=75){return (<div className="st50"></div>);
     }else if(st<100){return (<div className="st75"></div>);
     }
-    
   }
  
 
   render() {
-    console.log(this.state.components[0]);
-    const component = this.state.components.map((item, i) => (
-      <div>
-      <div className="dname">{ item.name }</div>
-      <div className="dcard" key={item.id}>
-        <div className="dimage">
-          <img src={ item.img } className="imgDetails" alt=""/>
-        </div>
-        <div className="dinfo">
-        <div className="descCont1">
-          <div className="dprice">{ item.price }€</div>
-        </div>
-        <div className="descCont2">
-          <div className="dstatus">Estado<div className="barst">{this.statusBar(item.status)}</div><div className="statusVar"></div></div>
-          <div className="dstatus">Tipo<div className="barst">{item.type}</div></div>
-          <div className="dstatus">Marca<div className="barst">{item.marca}</div></div>
-          <div className="dstatus">Fecha<div className="barst">{item.date}</div></div>
-          </div>
-          <div className="descCont3">
-          <div className="shopCardDet">Carrito</div>
-          <div className="shopCardDet">Comprar</div>
-          </div>
-          <div className="descCont4">
-          <div className="ddesc">Descripcion<div className="descCont">{ item.description}</div></div>
-          </div>
-        </div>
-      </div>
-      </div>
-    ));
-    
+    const myScrollbar = {
+      width: '20%',
+      height: 360,
+      float: 'right'
+    };
     this.state.shops.map((item, i) => {
-      if(item.id==this.state.components[0].shop){
+      if(item.id==this.state.components.shop){
         this.state.coords={
           lat:item.lat,
           lng:item.lon,
@@ -135,8 +151,42 @@ class List extends React.Component{
       }
     })
     return (
-      <div>
-        <div>{ component }</div>
+      <div className="content">
+        <div>
+        
+        <div>
+      <div className="dname" id="component">{ this.state.components.name }</div>
+      <div className="dcard" key={this.state.components.id}>
+        <div className="dimage">
+          <img src={ this.state.components.img } className="imgDetails" alt=""/>
+        </div>
+        <div className="dinfo">
+        <div className="descCont1">
+          <div className="dprice">{ this.state.price }€</div>
+        </div>
+        <div className="descCont2">
+          <div className="dstatus">Estado<div className="barst">{this.statusBar(this.state.status)}</div><div className="statusVar"></div></div>
+          <div className="dstatus">Tipo<div className="barst">{this.state.components.type}</div></div>
+          <div className="dstatus">Marca<div className="barst">{this.state.components.marca}</div></div>
+          <div className="dstatus">Fecha<div className="barst">{this.state.components.date}</div></div>
+          </div>
+          <div className="descCont3">
+          <div className="shopCardDet">Carrito</div>
+          <div className="shopCardDet">Comprar</div>
+          </div>
+          <div className="descCont4">
+          <div className="ddesc">Descripcion<div className="descCont">{ this.state.components.description}</div></div>
+          </div>
+        </div>
+        <div className="offer">A otro precio</div>
+        <ReactScrollbar style={myScrollbar}>
+        <ListSameName name={this.state.components.name}/>
+        </ReactScrollbar>
+      </div>
+      
+      </div>
+        
+        </div>
         <div className="maps">
         <Gmaps
         width={'100%'}

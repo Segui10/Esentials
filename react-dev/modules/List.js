@@ -17,24 +17,32 @@ class List extends React.Component{
     this.handleInputChange = this.handleInputChange.bind(this);  
     let that=this;
     window.onscroll = function() {that.myFunction()};
+    this.componentWillUnmount=this.componentWillUnmount.bind(this);
   } 
 
   componentDidMount() {
     this.UserList();
-      let navbar = document.getElementById("search");
-      let sticky = navbar.offsetTop;
-      this.setState({
-        sticky: sticky,
-      }); 
+    let sticky = document.getElementById("navbar").offsetTop;
+    this.setState({
+      sticky: sticky,
+    }); 
+  }
+
+  componentWillUnmount(){
+    navbar.classList.remove("sticky");
+    search.classList.remove("sticky2");
   }
 
   myFunction() {
     if (window.pageYOffset >= this.state.sticky) {
-      navbar.classList.add("sticky")
+      navbar.classList.add("sticky");
+      search.classList.add("sticky2");
     } else {
       navbar.classList.remove("sticky");
+      search.classList.remove("sticky2");
     }
   }
+
 
   handleInputChange(event) {
     const target = event.target;
@@ -135,7 +143,7 @@ filterItems(query,array,filter) {
       </div>
     ));
     return (
-      <div>
+      <div className="content">
         <div className="searchList" id="search">
         <input type="text" id="idFirstName" className="inputSearchList" placeholder="Search" name="search" value={this.state.search} onChange={this.search} />
         <select className="comboBoxList" name="filter" onChange={this.handleInputChange}>    
