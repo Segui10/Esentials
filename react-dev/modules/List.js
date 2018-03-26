@@ -64,11 +64,11 @@ class List extends React.Component{
     let params=this.state.params.param;
     var xmlhttp = new XMLHttpRequest();
     if(params){
-      var url = "http://localhost:8069/esential/json?type="+params;
-      //var url = "http://145.239.199.9:8069/esential/json"+params;
+      //var url = "http://localhost:8069/esential/json?type="+params;
+      var url = "http://145.239.199.9:8069/esential/json?type="+params;
     }else{
-      var url = "http://localhost:8069/esential/json";
-      //var url = "http://145.239.199.9:8069/esential/json";
+      //var url = "http://localhost:8069/esential/json";
+      var url = "http://145.239.199.9:8069/esential/json";
     }
     let that=this;
     xmlhttp.onreadystatechange = function() {

@@ -27,8 +27,8 @@ class ListSameName extends React.Component{
     let name=this.state.name;
     var xmlhttp = new XMLHttpRequest();
 
-      var url = "http://localhost:8069/esential/json?name="+name;
-      //var url = "http://145.239.199.9:8069/esential/json?name="+name;
+      //var url = "http://localhost:8069/esential/json?name="+name;
+      var url = "http://145.239.199.9:8069/esential/json?name="+name;
 
     let that=this;
     xmlhttp.onreadystatechange = function() {
@@ -73,14 +73,6 @@ statusBar(st){
   }else if(st<100){return (<div className="st75"></div>);
   }
 }
-/** 
- * <div className="scard" key={item.id}>
-        <div className=""><img src={ item.img } alt="" className="imgList"/></div>
-        <div className="dstatus">Estado<div className="barst">{this.statusBar(item.status)}</div><div className="statusVar"></div></div>
-        <NavLink to={'/details/'+item.id} className="detailButtonList">Detalles</NavLink>
-        <a className="shopcartButtonList" onClick={(e)=>this.shopCartAdd(item)}>Carrito</a>
-      </div>
-*/
   render() {
     const component = this.state.components.map((item, i) => (
       <div className="scard" key={item.id}>

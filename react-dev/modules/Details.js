@@ -85,8 +85,8 @@ class List extends React.Component{
       params=param;
     }
     var xmlhttp = new XMLHttpRequest();
-      var url = "http://localhost:8069/esential/json?id="+params;
-      //var url = "http://145.239.199.9:8069/esential/json?id="+params;
+      //var url = "http://localhost:8069/esential/json?id="+params;
+      var url = "http://145.239.199.9:8069/esential/json?id="+params;
     
     let that=this;
     xmlhttp.onreadystatechange = function() {
@@ -108,8 +108,8 @@ class List extends React.Component{
   GetShops() {
     let params=this.state.params.param;
     var xmlhttp = new XMLHttpRequest();
-      var url = "http://localhost:8069/esential/shop/json";
-      //var url = "http://145.239.199.9:8069/esential/shop/json";
+      //var url = "http://localhost:8069/esential/shop/json";
+      var url = "http://145.239.199.9:8069/esential/shop/json";
     
     let that=this;
     xmlhttp.onreadystatechange = function() {
