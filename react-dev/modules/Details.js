@@ -136,11 +136,6 @@ class List extends React.Component{
  
 
   render() {
-    const myScrollbar = {
-      width: '20%',
-      height: 360,
-      float: 'right'
-    };
     this.state.shops.map((item, i) => {
       if(item.id==this.state.components.shop){
         this.state.coords={
@@ -179,7 +174,7 @@ class List extends React.Component{
           </div>
         </div>
         <div className="offer">A otro precio</div>
-        <ReactScrollbar style={myScrollbar}>
+        <ReactScrollbar className="myScrollbar">
         <ListSameName name={this.state.components.name}/>
         </ReactScrollbar>
       </div>
