@@ -692,6 +692,110 @@ float: left;
   }
   .offerCont2{
     float: left;
+    width: 35%;
+    font-size: 19px;
+  }
+
+  .shopcartButtonOffer{
+    display: none;
+  }
+
+  .detailButtonOffer{
+    padding: 0px;
+    height: 50px;
+    padding-top: 25px;
+  }
+
+  .ocard {
+    height: 206px!important;
+  }
+
+  .oname{
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 800px) {
+
+
+  .shopcartButtonList{
+    width: 20%;
+    padding: 0px;
+    text-align: center;
+    height: 40px;
+    padding-top: 20px;
+  }
+
+  .detailButtonList{
+    width: 20%;
+    padding: 0px;
+    text-align: center;
+    height: 40px;
+    padding-top: 20px;
+  }
+
+  .dinfo{
+    width: 50%;
+  }
+  .linfo{
+    width: 30%;
+  }
+
+  .card{
+    width: 95%;
+  }
+  .imgDetails{
+    width:98%;
+    height: 450px;
+    border-bottom: 10px solid #404040;
+  }
+
+  .shopCardDet{
+    width: 80%;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  }
+
+  .dprice{
+    font-size: 50px;
+  }
+
+  .ddesc{
+    font-size: 12px;
+  }
+
+  .dstatus{
+    font-size: 12px;
+    width: 45%;
+    padding-bottom: 5px;
+  }
+
+  .descCont2{
+    height: 200px;
+  }
+  .myScrollbar{
+    width: 40%;
+    height: 360px;
+    float: right;
+  }
+
+  .oimage{
+    width: 180px;
+    height: 180px;
+  }
+  .imgOfert{
+    width: 180px;
+    height: 180px;
+  }
+
+  .offerCont1{
+    display: none;
+    width: 38%;
+    font-size: 12px;
+    margin-left: 10px;
+  }
+  .offerCont2{
+    float: left;
     width: 38%;
     font-size: 19px;
   }

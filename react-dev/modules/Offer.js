@@ -15,6 +15,7 @@ class Offer extends React.Component{
 
   componentDidMount() {
     this.UserList();
+    
   }
 
   UserList() {

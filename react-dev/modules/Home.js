@@ -9,6 +9,7 @@ import Contact from './Contact';
 class Home extends React.Component{
   constructor(props){
     super(props);
+    console.log(props);
     this.state = {                
       sticky: {},
     };      
@@ -16,7 +17,6 @@ class Home extends React.Component{
     this.componentWillUnmount=this.componentWillUnmount.bind(this);
     let that=this;
     window.onscroll = function() {that.myFunction()};
-
   } 
 
   componentDidMount() {

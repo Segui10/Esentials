@@ -4,17 +4,12 @@ import { Router, Route, browserHistory, IndexRoute, Switch } from 'react-router'
 import App from './modules/App'
 import About from './modules/About'
 import Home from './modules/Home'
-import List from './modules/List'
+import Root from './modules/Root'
 import Details from './modules/Details'
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
+import rootReducer from './reducers/esential'
 
-render((
-  <Router history={browserHistory}>
-    <Route path="/" component={App}>
-      <IndexRoute component={Home}/>
-      <Route path="/about" component={About}/>
-      <Route path="/list" component={List}/>
-      <Route path="/list/:param" component={List}/>
-      <Route path="/details/:param" component={Details}/>
-    </Route>
-  </Router>
-), document.getElementById('app'))
+render(
+  <Root />
+, document.getElementById('app'))
