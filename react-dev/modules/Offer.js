@@ -7,35 +7,15 @@ class Offer extends React.Component{
   constructor(props){
     super(props);
     this.state = {                
-      components: [],
+      components: this.props.list,
     };      
-    
-    this.UserList = this.UserList.bind(this);
   } 
 
-  componentDidMount() {
-    this.UserList();
-    
-  }
-
-  UserList() {
-    var xmlhttp = new XMLHttpRequest();
-    //var url = "http://localhost:8069/esential/json?offer=True";
-    var url = "http://145.239.199.9:8069/esential/json?offer=True";
-    let that=this;
-    xmlhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            var myArr = JSON.parse(this.responseText);
-            console.log(myArr);
-            that.setState({
-              components: myArr
-            });
-        }
-    };
-    xmlhttp.open("GET", url, true);
-    xmlhttp.setRequestHeader('Content-Type', 'text/plain');
-    xmlhttp.send();
-  }
+  componentWillReceiveProps(nextProps){
+    this.setState({
+      components:nextProps.list
+    })
+}
 
   render() {
     var settings = {

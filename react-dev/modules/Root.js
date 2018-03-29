@@ -3,39 +3,32 @@ import { render } from 'react-dom'
 import { Router, Route, browserHistory, IndexRoute, Switch } from 'react-router'
 import App from './App'
 import About from './About'
+import ListCon from '../container/list-container'
 import Home from './Home'
-import List from './List'
 import Details from './Details'
 import { Provider } from 'react-redux'
 import { createStore,applyMiddleware } from 'redux'
 import rootReducer from '../reducers/esential'
-import axiosMiddleware from 'redux-axios-middleware';
-import clients from '../clients';
+import thunk from 'redux-thunk';
+import { loadOffer, loadList } from '../actions';
 
-const store = createStore(rootReducer,applyMiddleware(
-    axiosMiddleware(clients),
-  )); 
+const store = createStore(rootReducer, applyMiddleware(thunk)); 
+store.dispatch(loadOffer());
+store.dispatch(loadList());
+
 
 class Root extends React.Component{
-    constructor(props){
-      super(props);
-      this.state = {                
-        offerProducts:store.getState().products
-      };  
-         
-    } 
-
-
   
   render() {
+    
     return (
         <Provider store={store}>
         <Router history={browserHistory}>
           <Route path="/" component={App}>
-            <IndexRoute component={Home} store={this.state.offerProducts}/>
+            <IndexRoute component={Home} />
             <Route path="/about" component={About}/>
-            <Route path="/list" component={List}/>
-            <Route path="/list/:param" component={List}/>
+            <Route path="/list" component={ListCon}/>
+            <Route path="/list/:param" component={ListCon}/>
             <Route path="/details/:param" component={Details}/>
           </Route>
         </Router>

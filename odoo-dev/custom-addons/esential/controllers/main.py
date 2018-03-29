@@ -12,7 +12,6 @@ class Main(http.Controller):
         param = False
         for k in kw:
             param = (k,kw[k])
-        print param
         for t in records:
             if t.read(['tested'])[0]['tested']:
                 if param == False:

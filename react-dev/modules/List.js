@@ -5,14 +5,13 @@ class List extends React.Component{
   constructor(props){
     super(props);
     this.state = {                
-      components: [],
-      componentsOriginal:[],
+      components: this.props.list,
+      componentsOriginal:this.props.list,
       search:"",
       params:this.props.params,
       filter:'name',
       sticky:{},
     };      
-    this.UserList = this.UserList.bind(this);
     this.search=this.search.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);  
     let that=this;
@@ -20,8 +19,14 @@ class List extends React.Component{
     this.componentWillUnmount=this.componentWillUnmount.bind(this);
   } 
 
+  componentWillReceiveProps(nextProps){
+    this.setState({
+      components:nextProps.list,
+      componentsOriginal:nextProps.list,
+    })
+}
+
   componentDidMount() {
-    this.UserList();
     let sticky = document.getElementById("navbar").offsetTop;
     this.setState({
       sticky: sticky,
@@ -58,31 +63,6 @@ class List extends React.Component{
 
   shopCartAdd(event) {
     console.log(event);
-  }
-
-  UserList(event) {
-    let params=this.state.params.param;
-    var xmlhttp = new XMLHttpRequest();
-    if(params){
-      //var url = "http://localhost:8069/esential/json?type="+params;
-      var url = "http://145.239.199.9:8069/esential/json?type="+params;
-    }else{
-      //var url = "http://localhost:8069/esential/json";
-      var url = "http://145.239.199.9:8069/esential/json";
-    }
-    let that=this;
-    xmlhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            var myArr = JSON.parse(this.responseText);
-            that.setState({
-              components: myArr,
-              componentsOriginal: myArr,
-            });
-        }
-    };
-    xmlhttp.open("GET", url, true);
-    xmlhttp.setRequestHeader('Content-Type', 'text/plain');
-    xmlhttp.send();
   }
 
   search(event){

@@ -7,8 +7,10 @@ import Home from './modules/Home'
 import Root from './modules/Root'
 import Details from './modules/Details'
 import { Provider } from 'react-redux'
-import { createStore } from 'redux'
+import { createStore,applyMiddleware } from 'redux'
 import rootReducer from './reducers/esential'
+import thunk from 'redux-thunk';
+
 
 render(
   <Root />

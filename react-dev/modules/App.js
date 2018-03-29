@@ -1,10 +1,17 @@
 import React from 'react'
 import NavLink from './NavLink'
+import * as actionCreators from '../actions/index';
+import {connect} from 'react-redux'
 
 
 class App extends React.Component{
-
+  constructor(props){
+    super(props);
+    
+  } 
   render() {
+
+   
     return (
       <div>
        <div className="titleCont">
@@ -21,4 +28,8 @@ class App extends React.Component{
   }
 }
 
-export default App;
+const mapStateToProps=(state)=>{
+  return state;
+}
+
+export default connect (mapStateToProps, actionCreators)(App);

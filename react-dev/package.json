@@ -21,10 +21,12 @@
     "react-gmaps": "^1.9.0",
     "react-redux": "^5.0.7",
     "react-router": "^2.0.0",
+    "react-router-redux": "^4.0.8",
     "react-scrollbar-js": "^1.0.1",
     "react-slick": "^0.21.0",
     "redux": "^3.7.2",
-    "redux-axios-middleware": "^4.0.0"
+    "redux-axios-middleware": "^4.0.0",
+    "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
     "babel-core": "^6.5.1",

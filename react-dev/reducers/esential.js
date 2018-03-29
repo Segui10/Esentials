@@ -9,15 +9,11 @@ const initialState = {
     error: null,
     email: null
   },
-  products: {
-    list: [],
-    loading: true,
-    error: null
+  productsOffer: {
+    list: []
   },
-  currentProduct: {
-    product: null,
-    loading: true,
-    error: null
+  productsList: {
+    list: []
   },
   cart: {
     items: [],
@@ -28,15 +24,32 @@ const initialState = {
 function userReducer (state = initialState.user, action) {
   return state;
 }
-function productsReducer (state = initialState.products) {
-  axios.get(`http://`+server+`:8069/esential/json?offer=True`)
-      .then(res => {
-        state.list = res.data;
-      })
-  return state;
+function productsOfferReducer (state = initialState.productsOffer, action) {
+  if(action.type==='CHANGE_OFFER'){
+    return [
+      ...state,
+      {
+        list: action.list
+      }
+    ][0]
+  
+  }else{
+    return state
+  }
+  
 }
-function currentProductReducer (state = initialState.currentProduct, action) {
-  return state;
+function productsListReducer (state = initialState.productsList, action) {
+  if(action.type==='CHANGE_LIST'){
+    return [
+      ...state,
+      {
+        list: action.list
+      }
+    ][0]
+  
+  }else{
+    return state
+  }
 }
 function cartReducer (state = initialState.cart, action) {
   return state;
@@ -44,8 +57,8 @@ function cartReducer (state = initialState.cart, action) {
 
 const rootReducer = combineReducers({
   user: userReducer,
-  products: productsReducer,
-  currentProduct: currentProductReducer,
+  productsOffer: productsOfferReducer,
+  productsList: productsListReducer,
   cart: cartReducer
 });
 

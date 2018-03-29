@@ -1,15 +1,13 @@
 import React from 'react';
 import Slider from "react-slick";
-import Offer from './Offer';
+import OfferCon from '../container/offer-container'
 import Category from './Category';
 import Contact from './Contact';
-
 
 
 class Home extends React.Component{
   constructor(props){
     super(props);
-    console.log(props);
     this.state = {                
       sticky: {},
     };      
@@ -30,6 +28,8 @@ componentWillUnmount(){
   navbar.classList.remove("sticky");
 }
 
+
+
   myFunction() {
     if (window.pageYOffset >= this.state.sticky) {
       navbar.classList.add("sticky");
@@ -39,11 +39,10 @@ componentWillUnmount(){
   }
 
   render() {
-    
     return (
       <div className="hcontent">
         <div className="offer">Ofertas</div>
-          <Offer/>
+          <OfferCon/>
         <div className="sliderOp"></div>
         <div className="offer">Categorias</div>
           <Category/>
