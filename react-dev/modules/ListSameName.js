@@ -6,44 +6,16 @@ class ListSameName extends React.Component{
   constructor(props){
     super(props);
     this.state = {                
-      components: [],
-      componentsOriginal:[],
+      components: this.props.listProduct,
       name:props.name,
     };      
-    this.UserList = this.UserList.bind(this);
   } 
-
-  componentDidMount() {
-    this.UserList();
-  }
-
 
 
   shopCartAdd(event) {
     console.log(event);
   }
 
-  UserList(event) {
-    let name=this.state.name;
-    var xmlhttp = new XMLHttpRequest();
-
-      //var url = "http://localhost:8069/esential/json?name="+name;
-      var url = "http://145.239.199.9:8069/esential/json?name="+name;
-
-    let that=this;
-    xmlhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            var myArr = JSON.parse(this.responseText);
-            that.setState({
-              components: myArr,
-              componentsOriginal: myArr,
-            });
-        }
-    };
-    xmlhttp.open("GET", url, true);
-    xmlhttp.setRequestHeader('Content-Type', 'text/plain');
-    xmlhttp.send();
-  }
 
   search(event){
     const target = event.target;
@@ -74,13 +46,14 @@ statusBar(st){
   }
 }
   render() {
-    const component = this.state.components.map((item, i) => (
-      <div className="scard" key={item.id}>
+    const component = this.state.components.map((item, i) => {
+      if(item.name==this.state.name){
+      return (<div className="scard" key={item.id}>
         <div className="imgListSame"><img src={ item.img } alt="" className="imgList"/></div>
         <div className="dstatus">Estado<div className="barst">{this.statusBar(item.status)}</div><div className="statusVar"></div></div>
         <NavLink to={'/details/'+item.id} className="ladetails">Detalles</NavLink>
-      </div>
-    ));
+      </div>)
+  }});
     return (
       <div>
       <div>{ component }</div>

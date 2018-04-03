@@ -1,18 +1,22 @@
 import React from 'react'
 import ListSameName from './ListSameName';
 import ReactScrollbar from 'react-scrollbar-js';
+import {connect} from 'react-redux'
+import * as actionCreators from '../actions/index';
 import {Gmaps, Marker, InfoWindow, Circle} from 'react-gmaps';
 
  
 const params = {v: '3.exp', key: 'AIzaSyAr19JxZytntqoTZgkLVyDos4QMTAw0I74'};
 
-class List extends React.Component{
+class Details extends React.Component{
   constructor(props){
     super(props);
+    console.log("Details");
+    console.log(props);
     this.state = {                
-      components: [],
-      params:this.props.params,
-      shops:[],
+      components: this.props.product,
+      shops:this.props.shops,
+      listProduct:this.props.store,
       coords:{},
       sticky: {},
       status:0,
@@ -20,30 +24,26 @@ class List extends React.Component{
       lat:0,
       lgt:0,
     };      
-    this.UserList = this.UserList.bind(this);
-    this.GetShops = this.GetShops.bind(this);
-    this.componentWillReceiveProps = this.componentWillReceiveProps.bind(this);
     let that=this;
     window.onscroll = function() {that.myFunction()};
     
   } 
 
-  componentWillReceiveProps(newProps){
-    this.setState({
-      params: newProps.params.param,
-    }); 
-    this.UserList(newProps.params.param);
-  }
-
   componentDidMount() {
-    this.UserList();
-    this.GetShops();
     let sticky = document.getElementById("navbar").offsetTop;
     this.setState({
       sticky: sticky,
     }); 
-    this.componentWillUnmount=this.componentWillUnmount.bind(this);
   }
+
+  componentWillReceiveProps(nextProps){
+    console.log(nextProps);
+    this.setState({
+      components: nextProps.product,
+      shops:nextProps.shops,
+      listProduct:nextProps.store,
+    })
+}
 
   componentWillUnmount(){
     navbar.classList.remove("sticky");
@@ -79,52 +79,6 @@ class List extends React.Component{
     console.log('onClick', e);
   }
 
-  UserList(param) {
-    let params=this.state.params.param;
-    if(param){
-      params=param;
-    }
-    var xmlhttp = new XMLHttpRequest();
-      //var url = "http://localhost:8069/esential/json?id="+params;
-      var url = "http://145.239.199.9:8069/esential/json?id="+params;
-    
-    let that=this;
-    xmlhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            var myArr = JSON.parse(this.responseText);
-            
-            that.setState({
-              components: myArr[0],
-              price: myArr[0].price,
-              status: myArr[0].status,
-            });
-        }
-    };
-    xmlhttp.open("GET", url, true);
-    xmlhttp.setRequestHeader('Content-Type', 'text/plain');
-    xmlhttp.send();
-  }
-
-  GetShops() {
-    let params=this.state.params.param;
-    var xmlhttp = new XMLHttpRequest();
-      //var url = "http://localhost:8069/esential/shop/json";
-      var url = "http://145.239.199.9:8069/esential/shop/json";
-    
-    let that=this;
-    xmlhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            var myArr = JSON.parse(this.responseText);
-            that.setState({
-              shops:myArr,
-            });
-        }
-    };
-    xmlhttp.open("GET", url, true);
-    xmlhttp.setRequestHeader('Content-Type', 'text/plain');
-    xmlhttp.send();
-  }
-
   statusBar(st){
     if(st==100){return (<div className="st100"></div>);
     }else if(st<=25){return (<div className="st0"></div>);
@@ -136,6 +90,7 @@ class List extends React.Component{
  
 
   render() {
+    
     this.state.shops.map((item, i) => {
       if(item.id==this.state.components.shop){
         this.state.coords={
@@ -157,10 +112,10 @@ class List extends React.Component{
         </div>
         <div className="dinfo">
         <div className="descCont1">
-          <div className="dprice">{ this.state.price }€</div>
+          <div className="dprice">{ this.state.components.price }€</div>
         </div>
         <div className="descCont2">
-          <div className="dstatus">Estado<div className="barst">{this.statusBar(this.state.status)}</div><div className="statusVar"></div></div>
+          <div className="dstatus">Estado<div className="barst">{this.statusBar(this.state.components.status)}</div><div className="statusVar"></div></div>
           <div className="dstatus">Tipo<div className="barst">{this.state.components.type}</div></div>
           <div className="dstatus">Marca<div className="barst">{this.state.components.marca}</div></div>
           <div className="dstatus">Fecha<div className="barst">{this.state.components.date}</div></div>
@@ -175,7 +130,7 @@ class List extends React.Component{
         </div>
         <div className="offer">A otro precio</div>
         <ReactScrollbar className="myScrollbar">
-        <ListSameName name={this.state.components.name}/>
+        <ListSameName name={this.state.components.name} listProduct={this.state.listProduct}/>
         </ReactScrollbar>
       </div>
       
@@ -208,4 +163,4 @@ class List extends React.Component{
     );
   }
 }
-export default List;
+export default Details;

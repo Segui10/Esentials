@@ -5,6 +5,7 @@ import NavLink from './NavLink'
 
 class Offer extends React.Component{
   constructor(props){
+    console.log("offer");
     super(props);
     this.state = {                
       components: this.props.list,

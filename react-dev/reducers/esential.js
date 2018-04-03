@@ -15,6 +15,9 @@ const initialState = {
   productsList: {
     list: []
   },
+  shopsList: {
+    list: []
+  },
   cart: {
     items: [],
     total: 0
@@ -51,6 +54,19 @@ function productsListReducer (state = initialState.productsList, action) {
     return state
   }
 }
+function shopsListReducer (state = initialState.shopsList, action) {
+  if(action.type==='CHANGE_SHOPS'){
+    return [
+      ...state,
+      {
+        list: action.list
+      }
+    ][0]
+  
+  }else{
+    return state
+  }
+}
 function cartReducer (state = initialState.cart, action) {
   return state;
 }
@@ -59,6 +75,7 @@ const rootReducer = combineReducers({
   user: userReducer,
   productsOffer: productsOfferReducer,
   productsList: productsListReducer,
+  shopsList: shopsListReducer,
   cart: cartReducer
 });
 

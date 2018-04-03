@@ -38,3 +38,21 @@ export function loadList(){
      list:res
    }
 }
+
+export function loadShops(){
+  return(dispatch)=>{
+    return   axios.get(`http://`+server+`:8069/esential/shop/json`)
+    .then(res => {
+      dispatch(changeShops(res.data));
+    })
+  }
+ }
+ 
+ 
+ export function changeShops(res){
+   return{
+     type:"CHANGE_SHOPS",
+     list:res
+   }
+}
+

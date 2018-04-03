@@ -4,17 +4,19 @@ import { Router, Route, browserHistory, IndexRoute, Switch } from 'react-router'
 import App from './App'
 import About from './About'
 import ListCon from '../container/list-container'
+import DetailsCon from '../container/details-container'
 import Home from './Home'
 import Details from './Details'
 import { Provider } from 'react-redux'
 import { createStore,applyMiddleware } from 'redux'
 import rootReducer from '../reducers/esential'
 import thunk from 'redux-thunk';
-import { loadOffer, loadList } from '../actions';
+import { loadOffer, loadList, loadShops } from '../actions';
 
 const store = createStore(rootReducer, applyMiddleware(thunk)); 
 store.dispatch(loadOffer());
 store.dispatch(loadList());
+store.dispatch(loadShops());
 
 
 class Root extends React.Component{
@@ -29,7 +31,7 @@ class Root extends React.Component{
             <Route path="/about" component={About}/>
             <Route path="/list" component={ListCon}/>
             <Route path="/list/:param" component={ListCon}/>
-            <Route path="/details/:param" component={Details}/>
+            <Route path="/details/:param" component={DetailsCon}/>
           </Route>
         </Router>
         </Provider>
