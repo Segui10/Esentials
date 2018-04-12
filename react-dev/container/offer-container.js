@@ -5,7 +5,6 @@ import Offer from '../modules/Offer';
 
 
 const mapStateToProps=(state)=>{
-    console.log(state);
     return state.productsOffer;
   }
 

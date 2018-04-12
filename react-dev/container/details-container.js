@@ -19,8 +19,6 @@ class DetailsCon extends React.Component{
       } 
 
       componentWillReceiveProps(nextProps){
-        console.log("nextProps");
-          console.log(nextProps);
           this.setState({
             store:nextProps.productsList,
             params:nextProps.params.param,
@@ -30,7 +28,6 @@ class DetailsCon extends React.Component{
 
 
 render(){
-    
     let product={};
     this.state.store.list.map((item, i) => {
         
@@ -38,8 +35,6 @@ render(){
             product=item;
         }
       })
-      console.log(product);
-      
     return(
         <Details shops={this.state.shops.list} product={product} store={this.state.store.list}></Details>
     )

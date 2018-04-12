@@ -11,18 +11,12 @@ const params = {v: '3.exp', key: 'AIzaSyAr19JxZytntqoTZgkLVyDos4QMTAw0I74'};
 class Details extends React.Component{
   constructor(props){
     super(props);
-    console.log("Details");
-    console.log(props);
     this.state = {                
       components: this.props.product,
       shops:this.props.shops,
       listProduct:this.props.store,
       coords:{},
       sticky: {},
-      status:0,
-      price:0,
-      lat:0,
-      lgt:0,
     };      
     let that=this;
     window.onscroll = function() {that.myFunction()};
@@ -37,7 +31,6 @@ class Details extends React.Component{
   }
 
   componentWillReceiveProps(nextProps){
-    console.log(nextProps);
     this.setState({
       components: nextProps.product,
       shops:nextProps.shops,
@@ -130,7 +123,7 @@ class Details extends React.Component{
         </div>
         <div className="offer">A otro precio</div>
         <ReactScrollbar className="myScrollbar">
-        <ListSameName name={this.state.components.name} listProduct={this.state.listProduct}/>
+        <ListSameName name={this.state.components.name} listProduct={this.state.listProduct} id={this.state.components.id}/>
         </ReactScrollbar>
       </div>
       

@@ -7,7 +7,8 @@ class ListSameName extends React.Component{
     super(props);
     this.state = {                
       components: this.props.listProduct,
-      name:props.name,
+      name:this.props.name,
+      id:this.props.id
     };      
   } 
 
@@ -47,7 +48,7 @@ statusBar(st){
 }
   render() {
     const component = this.state.components.map((item, i) => {
-      if(item.name==this.state.name){
+      if(item.name==this.state.name&&item.id!=this.state.id){
       return (<div className="scard" key={item.id}>
         <div className="imgListSame"><img src={ item.img } alt="" className="imgList"/></div>
         <div className="dstatus">Estado<div className="barst">{this.statusBar(item.status)}</div><div className="statusVar"></div></div>

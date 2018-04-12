@@ -1,15 +1,15 @@
 import React from 'react';
 import {connect} from 'react-redux'
 import * as actionCreators from '../actions/index';
-import List from '../modules/List';
+import Cart from '../modules/Cart';
 
 
 const mapStateToProps=(state)=>{
     console.log(state);
-    return state.productsList;
+    return state.cart;
   }
 
-class ListCon extends React.Component{
+class CartCon extends React.Component{
     constructor(props){
         super(props);
         this.state = {                
@@ -25,9 +25,9 @@ class ListCon extends React.Component{
 
 render(){
     return(
-        <List list={this.state.store.list} addcart={actionCreators.addCart}></List>
+        <Cart list={this.state.store.list} ></Cart>
     )
 }
 };
 
-export default connect (mapStateToProps, actionCreators)(ListCon);
+export default connect (mapStateToProps, actionCreators)(CartCon);

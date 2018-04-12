@@ -68,7 +68,23 @@ function shopsListReducer (state = initialState.shopsList, action) {
   }
 }
 function cartReducer (state = initialState.cart, action) {
-  return state;
+  console.log("cartReducer");
+  if(action.type==='CHANGE_CART'){
+    let list=state.list;
+    let total=state.total;
+    total++;
+    list.push(action.list)
+    return [
+      ...state,
+      {
+        list: list,
+        total: total
+      }
+    ][0]
+  
+  }else{
+    return state
+  }
 }
 
 const rootReducer = combineReducers({

@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 
-const server="localhost"
-//const server="145.239.199.9"
+//const server="localhost"
+const server="145.239.199.9"
 
 export function loadOffer(){
  return(dispatch)=>{
@@ -55,4 +55,23 @@ export function loadShops(){
      list:res
    }
 }
+
+export function addCart(item){
+  console.log(item);
+  return(dispatch)=>{
+    return   axios.get(`http://`+server+`:8069/esential/shop/json`)
+    .then(res => {
+      dispatch(changeCart(item));
+    })
+  }
+ }
+
+ 
+ 
+ export function changeCart(res){
+   return{
+     type:"CHANGE_CART",
+     list:res
+   }
+ }
 

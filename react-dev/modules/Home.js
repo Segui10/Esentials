@@ -24,12 +24,9 @@ class Home extends React.Component{
     }); 
   }
 
-componentWillUnmount(){
-  navbar.classList.remove("sticky");
-}
-
-
-
+  componentWillUnmount(){
+    navbar.classList.remove("sticky");
+  }
   myFunction() {
     if (window.pageYOffset >= this.state.sticky) {
       navbar.classList.add("sticky");

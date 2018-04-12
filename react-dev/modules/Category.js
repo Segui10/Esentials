@@ -48,19 +48,19 @@ class Category extends React.Component{
         cat: componentName,
         search: value
     });
-}
+  }
 
-filterItems(query,array) {
+  filterItems(query,array) {
     return array.filter(function(el) {
         let cName=el.name;
         return cName.toLowerCase().indexOf(query.toLowerCase()) > -1;
     })
-}
+  }
 
 
   render() {
     const categories = this.state.cat.map((item, i) => (
-      <div className="catElementCont"><NavLink to={item.url} className="catElement" props={item}>{item.name}</NavLink></div>
+      <div className="catElementCont" key={i}><NavLink to={item.url} className="catElement" props={item}>{item.name}</NavLink></div>
     ));
     return (
       <div>

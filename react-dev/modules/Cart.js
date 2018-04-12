@@ -1,7 +1,7 @@
 import React from 'react'
 import NavLink from './NavLink'
 
-class List extends React.Component{
+class Cart extends React.Component{
   constructor(props){
     super(props);
     this.state = {                
@@ -63,7 +63,6 @@ class List extends React.Component{
 
   shopCartAdd(event) {
     console.log(event);
-    this.props.addcart(event);
   }
 
   search(event){
@@ -136,4 +135,4 @@ class List extends React.Component{
     );
   }
 }
-export default List;
+export default Cart;

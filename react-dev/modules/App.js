@@ -21,6 +21,7 @@ class App extends React.Component{
           <li><NavLink to="/" onlyActiveOnIndex>Home</NavLink></li>
           <li><NavLink to="/list">Componentes</NavLink></li>
           <li><NavLink to="/about">About</NavLink></li>
+          <li><NavLink to="/cart">Cart</NavLink></li>
         </ul>
         {this.props.children}
       </div>
