@@ -8,24 +8,27 @@ const mapStateToProps=(state)=>{
     console.log(state);
     return state.productsList;
   }
+  
 
 class ListCon extends React.Component{
     constructor(props){
         super(props);
+        console.log(this.props);
         this.state = {                
-            store: this.props,
+            products: this.props,
         };  
       } 
 
       componentWillReceiveProps(nextProps){
           this.setState({
-            store:nextProps
+            products:nextProps
           })
       }
 
 render(){
+    
     return(
-        <List list={this.state.store.list} addcart={actionCreators.addCart}></List>
+        <List list={this.state.products.list} addcart={this.props.addCart}></List>
     )
 }
 };

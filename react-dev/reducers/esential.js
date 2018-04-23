@@ -19,7 +19,7 @@ const initialState = {
     list: []
   },
   cart: {
-    items: [],
+    list: [],
     total: 0
   }
 };
@@ -56,6 +56,7 @@ function productsListReducer (state = initialState.productsList, action) {
 }
 function shopsListReducer (state = initialState.shopsList, action) {
   if(action.type==='CHANGE_SHOPS'){
+    console.log("1")
     return [
       ...state,
       {

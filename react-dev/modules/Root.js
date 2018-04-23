@@ -12,7 +12,7 @@ import { Provider } from 'react-redux'
 import { createStore,applyMiddleware } from 'redux'
 import rootReducer from '../reducers/esential'
 import thunk from 'redux-thunk';
-import { loadOffer, loadList, loadShops } from '../actions';
+import { loadOffer, loadList, loadShops, addCart } from '../actions';
 
 const store = createStore(rootReducer, applyMiddleware(thunk)); 
 store.dispatch(loadOffer());

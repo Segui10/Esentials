@@ -1,6 +1,5 @@
 import axios from 'axios';
 
-
 //const server="localhost"
 const server="145.239.199.9"
 
@@ -57,12 +56,9 @@ export function loadShops(){
 }
 
 export function addCart(item){
-  console.log(item);
+  console.log(item)
   return(dispatch)=>{
-    return   axios.get(`http://`+server+`:8069/esential/shop/json`)
-    .then(res => {
-      dispatch(changeCart(item));
-    })
+    dispatch(changeCart(item));
   }
  }
 
