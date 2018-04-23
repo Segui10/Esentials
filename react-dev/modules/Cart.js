@@ -61,9 +61,6 @@ class Cart extends React.Component{
     });
   }
 
-  shopCartAdd(event) {
-    console.log(event);
-  }
 
   search(event){
     const target = event.target;

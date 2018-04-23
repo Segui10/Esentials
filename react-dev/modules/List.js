@@ -4,14 +4,21 @@ import NavLink from './NavLink'
 class List extends React.Component{
   constructor(props){
     super(props);
+    let filter="name";
+    let search="";
+    console.log(window);
+    if (window.location.pathname.split('/')[2]){
+      filter="type";
+      search=window.location.pathname.split('/')[2];
+    }
     this.state = {                
       components: this.props.list,
       componentsOriginal:this.props.list,
-      search:"",
+      search:search,
       params:this.props.params,
-      filter:'name',
+      filter:filter,
       sticky:{},
-    };      
+    };
     this.search=this.search.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);  
     let that=this;
@@ -62,7 +69,6 @@ class List extends React.Component{
   }
 
   shopCartAdd(event) {
-    console.log(event);
     this.props.addcart(event);
   }
 
@@ -126,7 +132,7 @@ class List extends React.Component{
         <div className="searchList" id="search">
         <input type="text" id="idFirstName" className="inputSearchList" placeholder="Search" name="search" value={this.state.search} onChange={this.search} />
         <select className="comboBoxList" name="filter" onChange={this.handleInputChange}>    
-          <option value="name" defaultValue>Nombre</option>
+          <option value="name">Nombre</option>
           <option value="price">Precio</option>
           <option value="type">Tipo</option>
         </select>

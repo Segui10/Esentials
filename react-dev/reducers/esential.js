@@ -56,7 +56,6 @@ function productsListReducer (state = initialState.productsList, action) {
 }
 function shopsListReducer (state = initialState.shopsList, action) {
   if(action.type==='CHANGE_SHOPS'){
-    console.log("1")
     return [
       ...state,
       {
@@ -69,11 +68,11 @@ function shopsListReducer (state = initialState.shopsList, action) {
   }
 }
 function cartReducer (state = initialState.cart, action) {
-  console.log("cartReducer");
   if(action.type==='CHANGE_CART'){
     let list=state.list;
     let total=state.total;
     total++;
+    console.log(action.list);
     list.push(action.list)
     return [
       ...state,

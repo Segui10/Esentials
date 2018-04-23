@@ -1,34 +1,33 @@
 import React from 'react';
 import {connect} from 'react-redux'
 import * as actionCreators from '../actions/index';
-import List from '../modules/List';
+import Login from '../modules/Login';
 
 
 const mapStateToProps=(state)=>{
-    return state.productsList;
+    console.log(state);
+    return state.user;
   }
-  
 
-class ListCon extends React.Component{
+class LoginCon extends React.Component{
     constructor(props){
         super(props);
         this.state = {                
-            products: this.props,
+            store: this.props,
         };  
       } 
 
       componentWillReceiveProps(nextProps){
           this.setState({
-            products:nextProps
+            store:nextProps
           })
       }
 
 render(){
-    
     return(
-        <List list={this.state.products.list} addcart={this.props.addCart}></List>
+        <Login list={this.state.store.list} ></Login>
     )
 }
 };
 
-export default connect (mapStateToProps, actionCreators)(ListCon);
+export default connect (mapStateToProps, actionCreators)(LoginCon);
