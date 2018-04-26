@@ -953,8 +953,8 @@ float: left;
 
 .separatorCart{
   margin: 0;
-  margin-left: 2%;
-  width: 96%;
+  margin-left: 5%;
+  width: 90%;
   border: solid 1px #999999;
   float: left;
 }
@@ -965,16 +965,19 @@ float: left;
 }
 
 .cnData{
+  margin-top: 30px;
   margin-left: 5%;
   width: 90%;
   float: left;
 }
 
 .cnprice{
-  float: left;
+  float: right;
+  margin-right: 1%;
 }
 
 .cnname{
   float: left;
   width: 54%;
 }
+

@@ -99,6 +99,7 @@ class Cart extends React.Component{
   }
 
   render() {
+    let total = 0;
     const component = this.state.components.map((item, i) => (
       <div>
       <div className="cardCart" key={item.id}>
@@ -110,7 +111,7 @@ class Cart extends React.Component{
         <div className="ctype">{ item.type}</div>
         </div>
         </div>
-        <div className="cprice">{ item.price }</div>
+        <div className="cprice" price={total=total+item.price}>{ item.price }</div>
       </div>
       <hr className="separatorCart"/>
       </div>
@@ -126,7 +127,11 @@ class Cart extends React.Component{
         <div className="cnprice">Price</div>
         </div>
       { component }
+      <div className="cnData">
+        <div className="cnprice">{ total }</div>
+        </div>
       </div>
+     
       </div>
     );
   }

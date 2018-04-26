@@ -7,7 +7,7 @@ const server="localhost"
 const initialState = {
   user: {
     error: null,
-    email: null
+    user: null
   },
   productsOffer: {
     list: []
@@ -25,7 +25,18 @@ const initialState = {
 };
 
 function userReducer (state = initialState.user, action) {
-  return state;
+  if(action.type==='GET_USER'){
+    return [
+      ...state,
+      {
+        error: action.error,
+        user: action.user
+      }
+    ][0]
+  
+  }else{
+    return state
+  }
 }
 function productsOfferReducer (state = initialState.productsOffer, action) {
   if(action.type==='CHANGE_OFFER'){

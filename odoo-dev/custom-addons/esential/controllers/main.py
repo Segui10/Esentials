@@ -25,3 +25,9 @@ class Main(http.Controller):
     def shops_json(self,**kw):
         shops = request.env['esentials.task'].sudo().search([]).read()
         return json.dumps(shops)
+
+    @http.route('/register/user', type='json', auth='none', cors='*')
+    def user_register(self,**args):
+        #print args
+        shops = request.env['esentials.task'].sudo().search([]).read()
+        return json.dumps(shops)

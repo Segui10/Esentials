@@ -27,7 +27,7 @@ class LoginCon extends React.Component{
 render(){
     console.log(this.state.show);
     return(
-        <Login show={this.state.show}></Login>
+        <Login show={this.state.show} register={this.props.registerUser}></Login>
     )
 }
 };
