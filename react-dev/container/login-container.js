@@ -14,6 +14,7 @@ class LoginCon extends React.Component{
         super(props);
         this.state = {                
             store: this.props,
+            show: this.props.show
         };  
       } 
 
@@ -24,8 +25,9 @@ class LoginCon extends React.Component{
       }
 
 render(){
+    console.log(this.state.show);
     return(
-        <Login list={this.state.store.list} ></Login>
+        <Login show={this.state.show}></Login>
     )
 }
 };

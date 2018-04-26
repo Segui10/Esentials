@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
-import NavLink from './NavLink';
+import { Link } from 'react-router'
  
 const customStyles = {
   content : {
@@ -10,7 +10,8 @@ const customStyles = {
     right                 : 'auto',
     bottom                : 'auto',
     marginRight           : '-50%',
-    transform             : 'translate(-50%, -50%)'
+    transform             : 'translate(-50%, -50%)',
+    background            : 'grey'
   }
 };
  
@@ -19,12 +20,17 @@ Modal.setAppElement('#modal')
 class Login extends React.Component {
   constructor() {
     super();
+    console.log(this.props);
     this.state = {
-      modalIsOpen: true
+      modalIsOpen: false
     };
  
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps){
+    this.setState({modalIsOpen: true});
   }
  
   openModal() {
@@ -35,6 +41,8 @@ class Login extends React.Component {
   closeModal() {
     this.setState({modalIsOpen: false});
   } 
+
+ 
  
   render() {
     return (
@@ -43,30 +51,36 @@ class Login extends React.Component {
           isOpen={this.state.modalIsOpen}
           onAfterOpen={this.afterOpenModal}
           onRequestClose={this.closeModal}
-          style={customStyles}
           contentLabel="Example Modal"
         >
- 
-          <h1 >Login</h1>
-          <div>
-            <form>
-              Email
-              <input />
-              Password
-              <input />
-            </form>
-          </div>
+        <div className="modalLogin">
+          
+        <div className="formRegister">
           <h1 >Register</h1>
-          <div>
             <form>
-              User
-              <input />
-              Email
-              <input />
-              Password
-              <input />
+              <div className="modalName" >User</div><br/>
+              <input className="inputModal" type="text" required/>
+              <div className="modalName" > Email</div><br/>
+              <input className="inputModal" type="email" required/>
+              <div className="modalName" >Password</div><br/>
+              <input className="inputModal" type="password" required/>
             </form>
           </div>
+          
+          <div className="formLogin">
+          <h1 >Login</h1>
+            <form>
+              <div className="modalName" >Email</div><br/>
+              <input className="inputModal" type="email" required/>
+              <div className="modalName" >Password</div><br/>
+              <input className="inputModal" type="password" required/>
+            </form>
+          </div>
+
+          <hr className="separator"/>
+
+        <div className="socialLogin"></div>
+        </div>
         </Modal>
       </div>
     );

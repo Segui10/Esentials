@@ -5,7 +5,6 @@ import App from './App'
 import About from './About'
 import ListCon from '../container/list-container'
 import CartCon from '../container/list-cart'
-import LoginCon from '../container/login-container'
 import DetailsCon from '../container/details-container'
 import Home from './Home'
 import Details from './Details'
@@ -35,7 +34,6 @@ class Root extends React.Component{
             <Route path="/list/:param" component={ListCon}/>
             <Route path="/details/:param" component={DetailsCon}/>
             <Route path="/cart" component={CartCon}/>
-            <Route path="/login" component={LoginCon}/>
           </Route>
         </Router>
         </Provider>
