@@ -858,20 +858,18 @@ float: left;
 .formRegister{
   float: left;
   width: 40%;
-  height: 230px;
 }
 
 .formLogin{
   float: right;
   width: 40%;
-  height: 230px;
 }
 
 .separator{
   width: 100%;
   background-color: #666666;
   color: #666666;
-  border: solid 1px #222222;
+  border: solid 2px #222222;
   float: left;
   margin-top: 30px;
 }
@@ -882,4 +880,101 @@ float: left;
   margin-left: 33%;
   height: 30px;
   margin-top: 20px;
+}
+
+.modalButton{
+  font-size: 16px;
+  background-color: #277acc;
+  margin-left: 1%;
+  margin-top: 20px;
+  float: left;
+  border: 0px;
+  color: white;
+  width: 100%;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.cartPaper{
+  float: left;
+  margin-top: 10px;
+  margin-left: 10%;
+  width: 80%;
+  background-color: #F5F5F5;
+  box-shadow: 10px 10px #444444;
+  margin-bottom: 60px;
+}
+
+
+.cardCart{
+  margin-left: 5%;
+  width: 90%;
+  height: 110px;
+  float: left;
+  
+}
+
+.cimage{
+  width: 12%;
+  margin-top: 10px;
+  float: left;
+}
+
+.cname{
+  width: 65%;
+  float: left;
+}
+
+.ctype{
+  width: 8%;
+  float: left;
+}
+
+.cstatus{
+  width: 8%;
+  float: left;
+}
+
+.cprice{
+  float: left;
+  margin-top: 80px;
+}
+
+.cartDataContainer{
+  width: 95%;
+  float: left;
+}
+
+.cartData{
+  width: 88%;
+  margin-top: 80px;
+  float: left;
+}
+
+.separatorCart{
+  margin: 0;
+  margin-left: 2%;
+  width: 96%;
+  border: solid 1px #999999;
+  float: left;
+}
+
+.cnimage{
+  width: 11%;
+  float: left;
+}
+
+.cnData{
+  margin-left: 5%;
+  width: 90%;
+  float: left;
+}
+
+.cnprice{
+  float: left;
+}
+
+.cnname{
+  float: left;
+  width: 54%;
 }

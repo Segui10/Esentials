@@ -35,16 +35,12 @@ class Cart extends React.Component{
 
   componentWillUnmount(){
     navbar.classList.remove("sticky");
-    search.classList.remove("sticky2");
   }
-
   myFunction() {
     if (window.pageYOffset >= this.state.sticky) {
       navbar.classList.add("sticky");
-      search.classList.add("sticky2");
     } else {
       navbar.classList.remove("sticky");
-      search.classList.remove("sticky2");
     }
   }
 
@@ -104,30 +100,33 @@ class Cart extends React.Component{
 
   render() {
     const component = this.state.components.map((item, i) => (
-      <div className="card" key={item.id}>
-        <div className="lname">{ item.name }</div>
-        <div className="limage"><img src={ item.img } alt="" className="imgList"/></div>
-        <div className="linfo">
-          <div className="liname">Informacion</div>
-          <div className="lstatus">Estado: { item.status }</div>
-          <div className="lprice">Precio: { item.price }</div>
-          <div className="ltype">Tipo: { item.type}</div>
+      <div>
+      <div className="cardCart" key={item.id}>
+      <div className="cartDataContainer">
+        <div className="cimage"><img src={ item.img } alt="" className="imgList"/></div>
+        <div className="cartData">
+        <div className="cname">{ item.name }</div>
+        <div className="cstatus">{ item.status }</div>
+        <div className="ctype">{ item.type}</div>
         </div>
-        <NavLink to={'/details/'+item.id} className="detailButtonList">Detalles</NavLink>
-        <a className="shopcartButtonList" onClick={(e)=>this.shopCartAdd(item)}>Carrito</a>
+        </div>
+        <div className="cprice">{ item.price }</div>
+      </div>
+      <hr className="separatorCart"/>
       </div>
     ));
     return (
-      <div className="content">
-        <div className="searchList" id="search">
-        <input type="text" id="idFirstName" className="inputSearchList" placeholder="Search" name="search" value={this.state.search} onChange={this.search} />
-        <select className="comboBoxList" name="filter" onChange={this.handleInputChange}>    
-          <option value="name" defaultValue>Nombre</option>
-          <option value="price">Precio</option>
-          <option value="type">Tipo</option>
-        </select>
+      <div className="hcontent ">
+      <div className="cartPaper">
+      <div className="cnData">
+        <div className="cnimage">Picture</div>
+        <div className="cnname">Name</div>
+        <div className="cstatus">Status</div>
+        <div className="ctype">Type</div>
+        <div className="cnprice">Price</div>
         </div>
-      <div>{ component }</div>
+      { component }
+      </div>
       </div>
     );
   }
