@@ -6,6 +6,7 @@ import About from './About'
 import ListCon from '../container/list-container'
 import CartCon from '../container/list-cart'
 import DetailsCon from '../container/details-container'
+import MakepcCon from '../container/makepc-container'
 import Home from './Home'
 import Details from './Details'
 import { Provider } from 'react-redux'
@@ -34,6 +35,7 @@ class Root extends React.Component{
             <Route path="/list/:param" component={ListCon}/>
             <Route path="/details/:param" component={DetailsCon}/>
             <Route path="/cart" component={CartCon}/>
+            <Route path="/makepc" component={MakepcCon}/>
           </Route>
         </Router>
         </Provider>

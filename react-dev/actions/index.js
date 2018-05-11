@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const server="localhost"
-//const server="145.239.199.9"
+//const server="localhost"
+const server="145.239.199.9"
 
 export function loadOffer(){
  return(dispatch)=>{

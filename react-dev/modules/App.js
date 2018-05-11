@@ -35,6 +35,7 @@ class App extends React.Component{
           <li><NavLink to="/list">Componentes</NavLink></li>
           <li><NavLink to="/about">About</NavLink></li>
           <li><NavLink to="/cart">Cart</NavLink></li>
+          <li><NavLink to="/makepc">MakePC</NavLink></li>
           <li><a onClick={this._onButtonClick}>Login</a></li>
            <LoginCon show={this.state.showComponent}/>
         </ul>
