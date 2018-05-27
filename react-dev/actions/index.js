@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-//const server="localhost"
-const server="145.239.199.9"
+const server="localhost"
+//const server="145.239.199.9"
 
 export function loadOffer(){
  return(dispatch)=>{
@@ -73,11 +73,30 @@ export function addCart(item){
 
 
  export function registerUser(item){
-  console.log(2);
-  console.log(item);
-  axios.post(`http://`+server+`:8069/register/user`, item )
+  return(dispatch)=>{
+  return axios.post(`http://`+server+`:8069/register/user`, item )
       .then(res => {
-        console.log(res);
-        console.log(res.data);
+        dispatch(changeUser(res.data));
       })
+    }
  }
+
+ export function changeUser(res){
+  return{
+    type:"GET_USER",
+    list:res
+  }
+}
+
+export function exitUser(){
+    return(dispatch)=>{
+      dispatch(nullUser());
+    }
+ }
+
+ export function nullUser(){
+  return{
+    type:"EXIT_USER",
+    list:null
+  }
+}

@@ -9,6 +9,10 @@
       name="Esential"
       res_model="esentials.task"
       view_mode="tree,form" />
+    <act_window id="action_esential_users"
+      name="Esential"
+      res_model="esentials.users"
+      view_mode="tree,form" />
     <!-- Menu item to open To-do Task list -->
     <menuitem id="menu_esential_task"
       name="EsentialComponents"
@@ -16,4 +20,7 @@
     <menuitem id="menu_esential_shop"
       name="EsentialShop"
       action="action_esential_shop" />
+    <menuitem id="menu_esential_users"
+      name="EsentialUsers"
+      action="action_esential_users" />
 </odoo>

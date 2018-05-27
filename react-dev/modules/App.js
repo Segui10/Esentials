@@ -9,6 +9,7 @@ class App extends React.Component{
   constructor(props){
     super(props);
     this.state = {
+      user:null,
       showComponent: false,
     };
     this._onButtonClick = this._onButtonClick.bind(this);
@@ -21,10 +22,31 @@ class App extends React.Component{
       showComponent: show,
     });
   }
+  componentWillReceiveProps(nextProps){
+    if(nextProps.user.user!=null){
+      this.setState({
+        showComponent: false
+      })
+    }
+    if(nextProps.user.error!=null){
+      this.setState({
+        showComponent: false
+      })
+    }
+    this.setState({
+      user:nextProps.user.user
+    })
+}
 
   render() {
-
-   
+    const button = this.state.user==null ? (
+      <li><a onClick={this._onButtonClick}>Login</a></li>
+    ) : (
+      <li>
+      <li><a onClick={this.props.exitUser}>Exit</a></li>
+      <li><a>{this.state.user}</a></li>
+      </li>
+    );
     return (
       <div>
        <div className="titleCont">
@@ -36,7 +58,7 @@ class App extends React.Component{
           <li><NavLink to="/about">About</NavLink></li>
           <li><NavLink to="/cart">Cart</NavLink></li>
           <li><NavLink to="/makepc">MakePC</NavLink></li>
-          <li><a onClick={this._onButtonClick}>Login</a></li>
+          {button}
            <LoginCon show={this.state.showComponent}/>
         </ul>
         {this.props.children}

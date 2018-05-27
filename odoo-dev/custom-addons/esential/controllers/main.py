@@ -1,6 +1,8 @@
 import json
+from odoo import models, fields, api
 from openerp import http
 from openerp.http import request
+import ast
 
 
 class Main(http.Controller):
@@ -28,6 +30,26 @@ class Main(http.Controller):
 
     @http.route('/register/user', type='json', auth='none', cors='*')
     def user_register(self,**args):
-        #print args
-        shops = request.env['esentials.task'].sudo().search([]).read()
-        return json.dumps(shops)
+        print args["user"]
+        print args["user"]["email"]
+        regi = request.env['esentials.users']
+        users = request.env['esentials.users'].sudo().search([]).read()
+        for item in users:
+            print item["email"] 
+            if len(args["user"]) == 2:
+                if str(item["email"]) == str(args["user"]["email"]):
+                    if str(item["password"]) == str(args["user"]["password"]):
+                        return json.dumps(item)
+                    else:
+                        return json.dumps({"error":"contrasenya erronea"})
+            if len(args["user"]) == 3:
+                if str(item["email"]) == str(args["user"]["email"]):
+                    return json.dumps({"error":"ya existe"})
+        if len(args["user"]) == 2:
+            return json.dumps({"error":"No existe"})
+        if len(args["user"]) == 3:
+            regi.register()
+            return json.dumps(args)
+        return json.dumps({})
+    
+   

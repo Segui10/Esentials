@@ -26,15 +26,24 @@ const initialState = {
 
 function userReducer (state = initialState.user, action) {
   if(action.type==='GET_USER'){
+    console.log(action)
     return [
       ...state,
       {
-        error: action.error,
-        user: action.user
+        error: null,
+        user: JSON.parse(action.list.result).display_name
       }
     ][0]
   
-  }else{
+  }else if(action.type==='EXIT_USER'){
+    return [
+      ...state,
+      {
+        error: null,
+        user: null
+      }
+    ][0]
+  }else {
     return state
   }
 }
@@ -82,9 +91,19 @@ function cartReducer (state = initialState.cart, action) {
   if(action.type==='CHANGE_CART'){
     let list=state.list;
     let total=state.total;
+    let cont=0;
     total++;
-    console.log(action.list);
-    list.push(action.list)
+    if(state.list==[]){
+      list.push(action.list)
+    }
+    state.list.forEach(function(element) {
+      if (element.id==action.list.id){
+        cont++;
+      }
+    });
+    if (cont==0){
+      list.push(action.list);
+    }
     return [
       ...state,
       {

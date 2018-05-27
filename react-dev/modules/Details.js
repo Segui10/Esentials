@@ -11,6 +11,7 @@ const params = {v: '3.exp', key: 'AIzaSyAr19JxZytntqoTZgkLVyDos4QMTAw0I74'};
 class Details extends React.Component{
   constructor(props){
     super(props);
+    console.log(this.props.shops);
     this.state = {                
       components: this.props.product,
       shops:this.props.shops,

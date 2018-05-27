@@ -19,6 +19,8 @@ class Components(models.Model):
     offer = fields.Boolean('Offer', default=False)
     img = fields.Char('Imagen')
     active = fields.Boolean('Active', default=True)
+    socket = fields.Char('Socket', default="1051")
+    ddr = fields.Char('DDR', default="DDR3")
 
     @api.multi
     def do_toggle_done(self):
@@ -39,3 +41,17 @@ class Shops(models.Model):
     name = fields.Char('Name', required=True)
     lat = fields.Char('Latitude', required=True)
     lon = fields.Char('Longitude', required=True)
+
+class UsersWeb(models.Model):
+    _name = 'esentials.users'
+    _description = 'Esential Computers users'
+
+    name = fields.Char('Name', required=True)
+    password = fields.Char('Password', required=True)
+    email = fields.Char('Email', required=True)
+    cart = fields.Char('Cart', required=True)
+
+    @api.multi  
+    def register(self):
+        print "dentro"
+        self.env['esentials.users'].create({'name':'test','pass':"asdadw",'emails':'adawd@gmail.com'})

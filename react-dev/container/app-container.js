@@ -1,19 +1,18 @@
 import React from 'react';
 import {connect} from 'react-redux'
 import * as actionCreators from '../actions/index';
-import Login from '../modules/Login';
+import App from '../modules/App';
 
 
 const mapStateToProps=(state)=>{
-    return state.user;
+    return state;
   }
 
-class LoginCon extends React.Component{
+class AppCon extends React.Component{
     constructor(props){
         super(props);
         this.state = {                
             store: this.props,
-            show: this.props.show
         };  
       } 
 
@@ -25,9 +24,9 @@ class LoginCon extends React.Component{
 
 render(){
     return(
-        <Login show={this.state.store.show} user={this.state.store.user} register={this.props.registerUser}></Login>
+        <App  user={this.state.store}></App>
     )
 }
 };
 
-export default connect (mapStateToProps, actionCreators)(LoginCon);
+export default connect (mapStateToProps, actionCreators)(AppCon);

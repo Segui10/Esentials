@@ -20,8 +20,8 @@ Modal.setAppElement('#modal')
 class Login extends React.Component {
   constructor() {
     super();
-    console.log(this.props);
     this.state = {
+      user:"",
       modalIsOpen: false,
       rUser:"",
       rEmail:"",
@@ -63,7 +63,7 @@ class Login extends React.Component {
     const name = target.name;
     switch(name){
       case "register":
-      let data = {
+      this.props.register({
         "params": {
           user:{
             "name":this.state.rUser,
@@ -71,16 +71,24 @@ class Login extends React.Component {
             "password":this.hashcode(this.state.rPassword)
           }  
         }
-      }
-      console.log(1);
-      console.log(data);
-      this.props.register(data);
+      })
+      break;
+      case "login":
+      let testdata=this.props.register({
+        "params": {
+          user:{
+            "email":this.state.lEmail,
+            "password":this.hashcode(this.state.lPassword)
+          }  
+        }
+      })
       break;
     }
   }
 
   componentWillReceiveProps(nextProps){
-    this.setState({modalIsOpen: true});
+    this.setState({user: nextProps.user});
+    this.setState({modalIsOpen: nextProps.show});
   }
  
   openModal() {
@@ -118,14 +126,14 @@ class Login extends React.Component {
             </form>
           </div>
           
-          <div className="formLogin" onClick={this.handleSubmit}>
+          <div className="formLogin">
           <h1 >Login</h1>
-            <form >
+            <form name="login">
               <div className="modalName" >Email</div><br/>
-              <input className="inputModal" type="email" required name="lEmail" onChange={this.handleInputChange}/>
+              <input className="inputModal" type="email" required onChange={this.handleInputChange} name="lEmail"/>
               <div className="modalName" >Password</div><br/>
-              <input className="inputModal" type="password" required name="lPassword" onChange={this.handleInputChange}/>
-              <input type="submit" name="login" value="Submit" className="modalButton"/>
+              <input className="inputModal" type="password" required onChange={this.handleInputChange} name="lPassword"/>
+              <input type="button" name="login" value="Submit" className="modalButton" onClick={this.handleSubmit}/>
             </form>
           </div>
 

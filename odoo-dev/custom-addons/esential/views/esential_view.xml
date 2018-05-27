@@ -26,6 +26,8 @@
                 <field name="points"/>
                 <field name="img"/>
                 <field name="date"/>
+                <field name="ddr"/>
+                <field name="socket"/>
               </group>
               <group name="group_right">
                 <field name="offer"/>
