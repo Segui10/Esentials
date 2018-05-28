@@ -93,8 +93,8 @@ class Makepc extends React.Component{
       }
     });
     this.setState({
-      components:[['PlacaBase',placabase],['Procesador',procesador],['Ram',ram],['Grafica',grafica],['FuenteAlimentacion',fuente],
-        ['HDD',hdd],['Monitor',monitor]],
+      components:[['PlacaBase',placabase],['Procesador',procesador],['Ram',ram],
+        ['Grafica',grafica],['FuenteAlimentacion',fuente],['HDD',hdd],['Monitor',monitor]],
       componentsOriginal:nextProps.list,
     })
   }
@@ -177,8 +177,8 @@ class Makepc extends React.Component{
       }
     });
     this.setState({
-      components:[['PlacaBase',placabase],['Procesador',procesador],['Ram',ram],['Grafica',grafica],['FuenteAlimentacion',fuente],
-        ['HDD',hdd],['Monitor',monitor]],
+      components:[['PlacaBase',placabase],['Procesador',procesador],['Ram',ram],
+      ['Grafica',grafica],['FuenteAlimentacion',fuente],['HDD',hdd],['Monitor',monitor]],
     })
   }
 

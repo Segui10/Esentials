@@ -12,3 +12,7 @@ odoo/
 node_modules/        
 bundle.js
 npm-debug.log
+react-dev/public/index.css
+react-dev/public/mixin.css
+react-dev/public/style.css
+react-dev/public/variables.css

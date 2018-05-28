@@ -2,7 +2,6 @@ import json
 from odoo import models, fields, api
 from openerp import http
 from openerp.http import request
-import ast
 
 
 class Main(http.Controller):
@@ -48,7 +47,7 @@ class Main(http.Controller):
         if len(args["user"]) == 2:
             return json.dumps({"error":"No existe"})
         if len(args["user"]) == 3:
-            regi.register()
+            regi.register(args["user"]["name"],args["user"]["pasword"],args["user"]["email"])
             return json.dumps(args)
         return json.dumps({})
     

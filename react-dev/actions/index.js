@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const server="localhost"
-//const server="145.239.199.9"
+//const server="localhost"
+const server="145.239.199.9"
 
 export function loadOffer(){
  return(dispatch)=>{
@@ -73,6 +73,7 @@ export function addCart(item){
 
 
  export function registerUser(item){
+   console.log(item)
   return(dispatch)=>{
   return axios.post(`http://`+server+`:8069/register/user`, item )
       .then(res => {

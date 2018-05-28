@@ -49,9 +49,9 @@ class UsersWeb(models.Model):
     name = fields.Char('Name', required=True)
     password = fields.Char('Password', required=True)
     email = fields.Char('Email', required=True)
-    cart = fields.Char('Cart', required=True)
+    cart = fields.Char('Cart')
 
     @api.multi  
-    def register(self):
+    def register(self,name,password,email):
         print "dentro"
-        self.env['esentials.users'].create({'name':'test','pass':"asdadw",'emails':'adawd@gmail.com'})
+        self.env['esentials.users'].create({'name':name,'pass':password,'emails':email})
